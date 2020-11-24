@@ -1,0 +1,839 @@
+divhtml, body
+{
+  height: 100%;
+}
+
+img, input[type=image]
+{
+  vertical-align:bottom;
+}
+
+@media only screen and (min-width: 1920px) 
+{
+  body
+  {
+    overflow-x: hidden;
+  }
+}
+
+body
+{
+  font-family: Helvetica;
+  width: 1920px;
+}
+
+/* Scrollbar Breite */
+body::-webkit-scrollbar 
+{
+  width: 15px;
+}
+
+/* Scrollbar Hintergrund */
+body::-webkit-scrollbar-track 
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  background: #e6e6e6;
+}
+
+/* Scrollbar "Griff" */
+body::-webkit-scrollbar-thumb 
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  background: #4a5053;
+}
+
+/* Scrollbar "Griff" wenn die Maus drüber schwebt */
+body::-webkit-scrollbar-thumb:hover 
+{
+  background: #52acac;
+}
+
+.flex-DirCol
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-DirRow
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-SpaceBetween
+{
+  justify-content: space-between;
+}
+
+.lightGreyBg
+{
+  background-color: #bdbdbd;
+}
+
+.lightRoundedBorder
+{
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+}
+
+.bigBlueRoundedBorder
+{
+  border: 2px solid #52acac;
+  border-radius: 10px;
+}
+
+.smallMarginBottom
+{
+  margin-bottom: 10px;
+}
+
+.middleMarginBottom
+{
+  margin-bottom: 20px;
+}
+
+.bigMarginBottom
+{
+  margin-bottom: 40px;
+}
+
+.textAlLeft
+{
+  text-align: left;
+}
+
+.textAlCenter
+{
+  text-align: center;
+}
+
+.textAlRight
+{
+  text-align: right;
+}
+
+.buttonAsLink
+{
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  color: #0c0ca7;
+  cursor: pointer;
+}
+
+.buttonAsLink:hover
+{
+  outline: none;
+  text-decoration: underline;
+}
+
+.buttonAsLink:focus
+{
+  outline: none;
+  text-decoration: underline;
+}
+
+.header
+{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9999;
+  height: 75px;
+  width: 1920px;
+  background-color: #4a5053;
+  display: flex;
+  justify-content: center;
+}
+
+.header h1
+{
+  color: #ffffff;
+  text-align: center;
+}
+
+.header-logo-frame
+{
+  position: absolute;
+  left: 20px; 
+  width: 180px;
+  height: 75px;
+  text-align: center;
+}
+
+.header-logo-img
+{
+  position: relative; 
+  top: 50%; 
+  transform: translateY(-50%);
+}
+
+.header-shopping-cart-frame
+{
+  position: absolute;
+  right: 20px; 
+  width: 75px;
+  height: 75px;
+  text-align: center;
+}
+
+.header-shopping-cart-img
+{
+  position: relative; 
+  top: 50%; 
+  transform: translateY(-50%);
+  filter: invert(98%) sepia(5%) saturate(27%) hue-rotate(11deg) brightness(106%) contrast(100%);
+}
+
+/*  Die benötigten filter kann man auf der Webseite "https://codepen.io/sosuke/pen/Pjoqqp" 
+    mit dem Hexcode der gewünschten Farbe berechnen   */
+.header-shopping-cart-img:hover
+{
+  filter: invert(68%) sepia(6%) saturate(3073%) hue-rotate(131deg) brightness(89%) contrast(88%);
+}
+
+.header-user-login-frame
+{
+  position: absolute;
+  right: 100px; 
+  width: 75px;
+  height: 75px;
+  text-align: center;
+}
+
+.header-user-login-img
+{
+  position: relative; 
+  top: 50%; 
+  transform: translateY(-50%);
+  filter: invert(98%) sepia(5%) saturate(27%) hue-rotate(11deg) brightness(106%) contrast(100%);
+}
+
+/*  Die benötigten filter kann man auf der Webseite "https://codepen.io/sosuke/pen/Pjoqqp" 
+    mit dem Hexcode der gewünschten Farbe berechnen   */
+.header-user-login-img:hover
+{
+  filter: invert(68%) sepia(6%) saturate(3073%) hue-rotate(131deg) brightness(89%) contrast(88%);
+}
+
+.fixed-navbar
+{
+  position: fixed;
+  top: 75px;
+  left: 0px;
+  z-index: 9999;
+  height: 50px;
+  width: 1920px;
+
+  background-color: #52acac;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+}
+  
+.fixed-navbar a
+{
+  float: left;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+}
+  
+/* Container in welchem sich alle drei Dropdowns befinden*/
+.dropdowns-container
+{
+  width: 750px;
+  display: flex;
+  justify-content: space-evenly; 
+}
+
+/*  #52acac Hintergrund für alle Dropdown-Überschriften */
+.fixed-navbar a:hover
+{
+  background-color: #2d7474;
+  color: #ffffff;
+}
+
+/* Die drei Dropdown container */
+.games-dropdown, .hardware-dropdown, .fanarticle-dropdown 
+{
+  float: left;
+  overflow: hidden;
+}
+
+/* Die Dropdown-Überschriften in der Navbar */
+.games-dropdown-head, .hardware-dropdown-head, .fanarticle-dropdown-head 
+{
+  height: 50px;
+  width: 110px;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: medium;
+  background: #52acac;
+  padding: 14px 16px;
+}
+
+.games-dropdown-head:hover, .hardware-dropdown-head:hover, .fanarticle-dropdown-head:hover
+{
+  background-color: #2d7474;
+}
+
+/* Die Dropdown Inhalte (normal nicht sichtbar) */
+.games-dropdown-content, .hardware-dropdown-content, .fanarticle-dropdown-content 
+{
+  display: none;
+  position: absolute;
+  top: 49px;
+  background-color: #52acac;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links innerhalb der Dropdowns */
+.games-dropdown-button, .hardware-dropdown-button, .fanarticle-dropdown-button
+{
+  float: none;
+  background-color: #52acac;
+  color: #000000;
+  border: none;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: medium;
+  min-width: 160px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.games-dropdown-button:hover, .hardware-dropdown-button:hover, .fanarticle-dropdown-button:hover
+{
+  background-color: #2d7474;
+  color: #ffffff;
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.2);
+}
+
+/* Dropdowns zeigen wenn die Maus drüber schwebt */
+.games-dropdown:hover .games-dropdown-content, .hardware-dropdown:hover .hardware-dropdown-content, .fanarticle-dropdown:hover .fanarticle-dropdown-content
+{
+  display: block;
+}
+
+/* Diese Tabelle enthält den Article und den Footer */
+.artilcle-footer-table 
+{
+  position: absolute;
+  top: 125px;
+  left: 0px;
+}
+
+.article
+{
+  min-height: 700px;
+  padding-top: 30px;
+  height: 100%;
+  text-align: center;
+  width: 1920px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.products_table
+{
+  border-collapse: collapse;
+  margin-bottom: 60px;
+}
+
+/* Überschrift der Produkt-Tabelle */
+.products_table caption
+{
+  font-size: 40px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.products_table_img
+{
+  height: 185px;
+}
+
+.products_table td, .products_table th
+{
+  border: 1px solid #000000;
+}
+
+.products_table #table_zellen_bild
+{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.products_table #table_zellen_bezeichnung
+{
+  padding: 20px;
+  width: 180px;
+  text-align: left;
+}
+
+.products_table #table_zellen_kurzbeschreibung
+{
+  padding: 20px;
+  width: 300px;
+  text-align: left;
+}
+
+.products_table #table_zellen_preis
+{
+  width: 130px;
+  text-align: center;
+}
+
+.footer
+{
+  height: 75px;
+  width: 1920px;
+  background-color: #4a5053;
+  margin-left: -3px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-view-table
+{
+  width: 1200px;
+  padding-bottom: 40px;
+}
+
+#product-view-table_img-zelle
+{
+  width: 720px;
+  vertical-align: top;
+}
+
+#product-view-table_bezeichnungs-zelle
+{
+  font-size: xx-large;
+  font-weight: bold;
+  height: 75px;
+  width: 500px;
+  padding-bottom: 40px;
+  padding-left: 15px;
+  vertical-align: top;
+  text-align: left;
+}
+
+#product-view-table_preis-zelle
+{
+  font-size: x-large;
+  font-weight: bold;
+  height: 36px;
+  width: 500px;
+  padding-bottom: 40px;
+  padding-left: 15px;
+  vertical-align: top;
+  text-align: left;
+}
+
+/* Für den abstand von Preis zum "In den Einkaufswagen!"-Button */
+#product-view-table_preis-zelle label
+{
+  padding-right: 20px;
+}
+
+#product-view-table_addToShoppingcart-Button
+{
+  font-size: large;
+  font-weight: 600;
+  height: 36px;
+}
+
+#product-view-table_kurzBeschreibungs-zelle
+{
+  font-size: 22px;
+  text-align: justify;
+  vertical-align: top;
+  line-height: 1.5;
+  padding-left: 15px;
+}
+
+#product-view-table_beschreibungs-zelle
+{
+  font-size: 22px;
+  text-align: justify;
+  line-height: 1.5;
+  padding-left: 8px;
+  padding-top: 10px;
+}
+
+/* Notiz wenn das Produkt zum Warenkorb hinzugefügt wurde */
+.addedToShoppingCart-notice
+{
+  position: absolute;
+  top: 154px;
+  left: 1440px;
+  font-size: 22px;
+  background-color: #52acac;
+  padding-top: 2px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 10px;
+  border-radius: 5px;
+}
+
+.addedToShoppingCart-notice a:link 
+{
+  text-decoration: none;
+  border-radius: 5px;
+  padding-top: 4px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+}
+
+.addedToShoppingCart-notice a:visited 
+{
+  text-decoration: none;
+  border-radius: 5px;
+  padding-top: 4px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+}
+
+.addedToShoppingCart-notice a:hover 
+{
+  text-decoration: underline;
+  background-color: #50caca;
+  border-radius: 5px;
+  padding-top: 4px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+}
+
+.addedToShoppingCart-notice a:active
+{
+  text-decoration: underline;
+  background-color: #50caca;
+  border-radius: 5px;
+  padding-top: 4px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+}
+
+
+
+
+.backend-logindata-container
+{
+  padding-top: 100px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.backend-logindata-container table
+{
+  text-align: left;
+}
+
+.backend-newDBdataInput-container
+{
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.backend-newDBdataInput-container table td
+{
+  display: table-cell;
+  height: 30px;
+}
+
+
+
+
+
+
+
+.shoppingCart-Table
+{
+  border-collapse: collapse;
+  margin-bottom: 60px;
+  
+}
+
+.shoppingCart-Table td, th
+{
+  border: 1px solid #000000;
+}
+
+.shoppingCart-Table caption
+{
+  font-size: 40px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.shoppingCart-Table_Notice
+{
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+}
+
+.checkoutAsGuest-Table
+{
+  text-align: left;
+}
+
+.checkoutAsGuest-Table td
+{
+  height: 75px;
+  width: 450px;
+  position: relative;
+}
+
+.checkoutAsGuest-Table input
+{
+  position: absolute;
+  bottom: 0;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #d4d4d4;
+}
+
+.checkoutAsGuest-Table #long-input
+{
+  width: 95%;
+}
+
+.checkoutAsGuest-Table #short-input
+{
+  width: 90%;
+}
+
+.checkoutAsGuest-Table input:focus
+{
+  outline: none;
+  height: 30px;
+  border-radius: 4px;
+  border: 2px solid #52acac;
+}
+
+/* Pfeile im Number-Input entfernen für: Chrome, Safari, Edge, Opera */
+.numInptWithoutArrows::-webkit-outer-spin-button,
+.numInptWithoutArrows::-webkit-inner-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Pfeile im Number-Input entfernen für: Firefox */
+.numInptWithoutArrows[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+.checkoutAsGuest-Table label
+{
+  position: absolute;
+  bottom: 37px;
+  font-size: 16px;
+}
+
+.checkoutAsGuest-Table #submit-button
+{
+  background-color: #52acac;
+  width: 60px;
+  top: 20px;
+  right: 35px;
+}
+
+.checkoutAsGuest-Table #submit-button:focus
+{
+  outline: 2px solid #245050;
+}
+
+.checkoutAsGuest-Table #submit-button:active
+{
+  outline: none;
+  background-color: #2d7474;
+}
+
+.bestell-uebersicht_anschrift-container
+{
+  position: absolute;
+  top: 50px;
+  right: 125px;
+  padding: 25px;
+  border: 2px solid #52acac;
+  border-radius: 10px;
+}
+
+.bestell-uebersicht_anschrift-container caption
+{
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.bestell-uebersicht_anschrift-container input
+{
+  width: 100%;
+  border: 1px solid #c5c5c5;
+}
+
+.bestell-uebersicht_produktSummaryTable-container
+{
+  position: absolute;
+  top: 50px;
+  left: 400px;
+  padding: 25px;
+  border: 2px solid #52acac;
+  border-radius: 10px;
+}
+
+.bestell-uebersicht_produktSummaryTable input[type=image]
+{
+  width: 200px;
+  height: 112px;
+  border-collapse: 0px;
+}
+
+.bestell-uebersicht_produktSummaryTable #totalCost-Cell
+{
+  text-align: right;
+  text-decoration: 1px underline double;
+}
+
+.allOrdersContainer h1
+{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.singleOrderContainer
+{
+  width: 1000px;
+  padding: 20px;
+}
+
+.orderHead
+{
+  background-color: #eeeeee;
+  padding: 10px;
+}
+
+.orderItemsContainer
+{
+  margin-left: 10px;
+}
+
+.orderItemsContainer input[type=submit]
+{
+  text-decoration: underline;
+  padding-bottom: 4px;
+}
+
+.orderItem
+{
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.orderItem div
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.orderItem input[type=image]
+{
+  width: 150px;
+}
+
+.singleOrderContainer small
+{
+  color: #6b6b6b;
+  padding-bottom: 2px;
+}
+
+#orderItem_NummerCell
+{
+  width: 150px;
+  height: 85px;
+  align-items: flex-start;
+  margin-left: 20px;
+}
+
+#orderItem_BezeichnungCell
+{
+  width: 300px;
+  height: 85px;
+  align-items: flex-start;
+}
+
+#orderItem_StkPreisCell
+{
+  width: 110px;
+  height: 85px;
+  align-items: flex-end;
+}
+
+#orderItem_MengeCell
+{
+  width: 110px;
+  height: 85px;
+  align-items: flex-end;
+}
+
+#orderItem_GesPreisCell
+{
+  width: 110px;
+  height: 85px;
+  align-items: flex-end;
+}
+
+
+
+
+
+
+.tooltip {
+  color: #235ddb;
+  cursor: help; 
+  position: relative;
+}
+
+.tooltip span[role=tooltip] {
+  display: none;
+}
+
+.tooltip:hover span[role=tooltip] {
+  display: block;  
+  position: absolute; 
+  top: 20px;
+  left: 0px;
+  min-width: 200px;
+  padding: 0.5em;
+  z-index: 100;
+  color: #000; 
+  background-color: #fdfdfd;
+  border: solid 1px #bdbdbd;
+  border-radius: 0.2em; 
+  
+}
