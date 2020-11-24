@@ -406,6 +406,9 @@ body::-webkit-scrollbar-thumb:hover
   display: flex;
   align-items: center;
   justify-content: center;
+
+
+  
 }
 
 .product-view-table
@@ -417,7 +420,12 @@ body::-webkit-scrollbar-thumb:hover
 #product-view-table_img-zelle
 {
   width: 720px;
-  vertical-align: top;
+  vertical-align: middle;
+}
+
+.product-view-table img
+{
+  height: 400px;
 }
 
 #product-view-table_bezeichnungs-zelle
@@ -705,7 +713,6 @@ body::-webkit-scrollbar-thumb:hover
 .bestell-uebersicht_produktSummaryTable input[type=image]
 {
   width: 200px;
-  height: 112px;
   border-collapse: 0px;
 }
 
@@ -834,6 +841,5 @@ body::-webkit-scrollbar-thumb:hover
   color: #000; 
   background-color: #fdfdfd;
   border: solid 1px #bdbdbd;
-  border-radius: 0.2em; 
-  
+  border-radius: 0.2em;
 }

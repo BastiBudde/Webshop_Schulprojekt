@@ -262,7 +262,7 @@
                                     <tr>
                                         <td rowspan='3' id='product-view-table_img-zelle'>
                                             <a href='$row[5]'> 
-                                                <img class='product-view-img' src=\"../$row[0]\" alt='$row[0]' height='394px'> 
+                                                <img class='product-view-img' src=\"../$row[0]\" alt='$row[0]'> 
                                             </a>
                                         </td>
                                         <td id='product-view-table_bezeichnungs-zelle' height='75px'>
