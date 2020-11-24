@@ -406,10 +406,6 @@ body::-webkit-scrollbar-thumb:hover
   display: flex;
   align-items: center;
   justify-content: center;
-
-
-
-  
 }
 
 .product-view-table
