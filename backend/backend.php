@@ -225,92 +225,88 @@ session_start();
                             echo "
                                 <div class='backend-newDBdataInput-container'>
             
-                                    <table>
-            
-                                        <form action='saveToDB.php' method='POST'>
-            
-                                        <tr> 
-                                            <td colspan='3'> <h2> Willkommen " . $_SESSION['mitarbeiter_Vorname'] . " " . $_SESSION['mitarbeiter_Nachname'] . "!</h2> </td>
-                                        </tr>";
+                                    <form action='saveToDB.php' method='POST'>
+                                    
+                                        <table>
 
-                                        if(isset($_GET['save_successfull']) && $_GET['save_successfull'] == True)
-                                        {
-                                            echo "
-                                                <tr> 
-                                                    <td colspan='3'>
-                                                        <span style='font-weight: bold;'>Erfolgreich in Datenbank gespeichert!</span>
-                                                    </td>
-                                                </tr>
-                                            ";
-                                        }
-                            echo"            
-                                        <tr>
-                                            <td> <label for='Bezeichnung'>Bezeichnung</label> </td>
-                                            <td> <input type='text' id='Bezeichnung' name='Bezeichnung' required='true' maxlength='35' style='width:295px'> </td>
-                                            <td> <label for='Bezeichnung'>(Maximal 35 Zeichen)</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td> <label for='Kurzbeschreibung'>Kurzbeschreibung</label> </td>
-                                            <td> <textarea rows='5' cols='40' id='Kurzbeschreibung' name='Kurzbeschreibung' required='true'></textarea></td>
-                                        </tr>
-                                        <tr>
-                                            <td> <label for='Beschreibung'>Beschreibung</label> </td>
-                                            <td> <textarea rows='8' cols='40' id='Beschreibung' name='Beschreibung' required='true'></textarea></td>
-                                        </tr>
-                                        <tr>
-                                            <td> <label for='Preis'>Preis</label> </td>
-                                            <td> <input type='number' id='Preis' name='Preis' required='true' min='0' max='999.99' step='0.01' style='height: 35px; font-size: large;'> </td>
-                                            <td> <label for='Preis'>(Ohne Währungszeichen angeben [Maximal 999.99€])</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td> <label for='Sparte'>Sparte</label> </td>
-                                            <td> 
-                                                <select id='Sparte' name='Sparte' required='true' onchange='javascript: dynamicdropdown(this.options[this.selectedIndex].value);'>
-                                                    <option value=''>Sparte Wählen</option>
-                                                    <option value='Games'>Games</option>
-                                                    <option value='Hardware'>Hardware</option>
-                                                    <option value='Fanartikel'>Fanartikel</option>
-                                                </select>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td> <label for='Kategorie'>Kategorie</label> </td>
-                                            <td> 
-                                                <script type='text/javascript' language='JavaScript'>
-                                                    document.write(\"<select name='Kategorie' id='Kategorie' required='true'><option value=''>Select Kategorie</option></select>\")
-                                                </script>
-                                                <noscript>
-                                                    <select id='Kategorie' name='Kategorie'>
+                                            <caption>
+                                                <div>
+                                                    <h2> Willkommen " . $_SESSION['mitarbeiter_Vorname'] . " " . $_SESSION['mitarbeiter_Nachname'] . "! </h2> 
+                                                    
+                                                    <form action='backend-logout.php'>
+                                                        <input type='submit' value='Logout'>
+                                                    </form>
+                                                </div>
+                                            </caption>";
+
+                                            if(isset($_GET['save_successfull']) && $_GET['save_successfull'] == True)
+                                            {
+                                                echo "
+                                                    <tr> 
+                                                        <td colspan='3'>
+                                                            <span style='font-weight: bold;'>Erfolgreich in Datenbank gespeichert!</span>
+                                                        </td>
+                                                    </tr>
+                                                ";
+                                            }
+                                echo"            
+                                            <tr>
+                                                <td> <label for='Bezeichnung'>Bezeichnung</label> </td>
+                                                <td> <input type='text' id='Bezeichnung' class='Bezeichnung' name='Bezeichnung' required='true' maxlength='35'> </td>
+                                            </tr>
+                                            <tr>
+                                                <td> <label for='Kurzbeschreibung'>Kurzbeschreibung</label> </td>
+                                                <td> <textarea rows='5' cols='60' id='Kurzbeschreibung' name='Kurzbeschreibung' required='true'></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <td> <label for='Beschreibung'>Beschreibung</label> </td>
+                                                <td> <textarea rows='15' cols='60' id='Beschreibung' name='Beschreibung' required='true'></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <td> <label for='Preis'>Preis</label> </td>
+                                                <td> <input type='number' id='Preis' name='Preis' required='true' min='0' max='999.99' step='0.01'> </td>
+                                            </tr>
+                                            <tr>
+                                                <td> <label for='Sparte'>Sparte</label> </td>
+                                                <td> 
+                                                    <select id='Sparte' name='Sparte' required='true' onchange='javascript: dynamicdropdown(this.options[this.selectedIndex].value);'>
+                                                        <option value=''>Sparte Wählen</option>
+                                                        <option value='Games'>Games</option>
+                                                        <option value='Hardware'>Hardware</option>
+                                                        <option value='Fanartikel'>Fanartikel</option>
                                                     </select>
-                                                </noscript>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td> <label for='Picture_Path'>Bilder-Pfad*</label> </td>
-                                            <td> <input type='text' id='Picture_Path' name='Picture_Path' required='true' value='Bilder/' style='width:295px'> </td>
-                                            <td> <label for='Picture_Path'>(Bitte namen der Bild-Datei eingeben)</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td> <label for='Bilderquelle'>Bilderquelle</label> </td> 
-                                            <td> <input type='text' id='Bilderquelle' name='Bilderquelle' required='true' style='width:295px'> </td>
-                                            <td> <label for='Bilderquelle'>(Webseite von welchwer das Bild stammt)</label> </td> 
-                                        </tr>
-                                        <tr>
-                                            <td> <br> <input type='submit' value='Speichern'></td>
-            
-                                        </form>
-            
-                                            <td></td>
-                                            <td style='text-align: right'>
-                                                <form action='backend-logout.php'>
-                                                    <input type='submit' value='Logout'>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan='3'> <div> <br> <br>*Bilder müssen in das verzeichnis 'Bilder' mit dem hier angegebenen Namen kopiert werden</div> </td>
-                                        </tr>
-                                    </table>
+                                                </td> 
+                                            </tr>
+                                            <tr>
+                                                <td> <label for='Kategorie'>Kategorie</label> </td>
+                                                <td> 
+                                                    <script type='text/javascript' language='JavaScript'>
+                                                        document.write(\"<select name='Kategorie' id='Kategorie' required='true'><option value=''>Select Kategorie</option></select>\")
+                                                    </script>
+                                                    <noscript>
+                                                        <select id='Kategorie' name='Kategorie'>
+                                                        </select>
+                                                    </noscript>
+                                                </td> 
+                                            </tr>
+                                            <tr>
+                                                <td> <label for='Picture_Path'>Bilder-Pfad*</label> </td>
+                                                <td> <input type='text' id='Picture_Path' name='Picture_Path' required='true' value='Bilder/'> </td>
+                                            </tr>
+                                            <tr>
+                                                <td> <label for='Bilderquelle'>Bilderquelle</label> </td> 
+                                                <td> <input type='text' id='Bilderquelle' name='Bilderquelle' required='true'> </td>
+                                            </tr>
+                                            <tr>
+                                                <td> <br> <input type='submit' value='Speichern'></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan='3'> <div> <br> <br>*Bilder müssen in das verzeichnis 'Bilder' mit dem hier angegebenen Namen kopiert werden</div> </td>
+                                            </tr>
+
+                                        </table>
+
+                                    </form>
             
                                 </div>"; 
                         } 

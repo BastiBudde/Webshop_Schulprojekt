@@ -1,22 +1,7 @@
 <?php 
 session_start ();
 
-function searchForID_Product($ID_Produkt, $array)
-{
-    $n = 0;
-    foreach ($array as $item)
-    {
-        if($item['ID_Produkt'] == $ID_Produkt)
-        {
-            return $n;
-        }
-        else
-        {
-            $n++;
-        }
-    }
-    return FALSE;
-}
+include "../includes/searchForID_Product.php";
 
 if(isset($_POST['ProductToUpdate']) && isset($_POST['NewAmount']))
 {

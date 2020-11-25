@@ -1,3 +1,9 @@
+*
+{
+  padding: 0;
+  margin: 0;
+}
+
 divhtml, body
 {
   height: 100%;
@@ -149,7 +155,7 @@ body::-webkit-scrollbar-thumb:hover
 .header h1
 {
   color: #ffffff;
-  text-align: center;
+  margin: auto 0;
 }
 
 .header-logo-frame
@@ -396,6 +402,12 @@ body::-webkit-scrollbar-thumb:hover
   text-align: center;
 }
 
+.products_table #table_zellen_actionButtons
+{
+  display: flex;
+  flex-direction: column;
+}
+
 .footer
 {
   height: 75px;
@@ -538,16 +550,57 @@ body::-webkit-scrollbar-thumb:hover
 .backend-newDBdataInput-container
 {
   width: 50%;
-  margin: 0 auto;
+  margin: 0 auto 25px;  /* top left/right bottom */
   display: flex;
   align-items: flex-start;
   justify-content: center;
+}
+
+.backend-newDBdataInput-container caption div
+{
+  padding-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .backend-newDBdataInput-container table td
 {
   display: table-cell;
   height: 30px;
+  text-align: left; 
+  vertical-align: top;
+}
+
+.backend-newDBdataInput-container input[type=text]
+{
+  font-size: large;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.backend-newDBdataInput-container textarea
+{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.backend-newDBdataInput-container input[type=number]
+{
+  height: 35px;
+  font-size: large;
+  margin-bottom: 10px;
+}
+
+.backend-newDBdataInput-container select
+{
+  font-size: large;
+  margin-bottom: 10px;
+}
+
+.backend-newDBdataInput-container #Bezeichnung
+{
+  font-size: large;
+  padding: 5px 0;
 }
 
 
@@ -560,7 +613,7 @@ body::-webkit-scrollbar-thumb:hover
 {
   border-collapse: collapse;
   margin-bottom: 60px;
-  
+  min-width: 700px;
 }
 
 .shoppingCart-Table td, th
@@ -572,15 +625,25 @@ body::-webkit-scrollbar-thumb:hover
 {
   font-size: 40px;
   font-weight: bold;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 .shoppingCart-Table_Notice
 {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
   border: none;
 }
+
+.shoppingCart-Table #table_zellen_actionButtons div
+{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
 
 .checkoutAsGuest-Table
 {
@@ -754,13 +817,22 @@ body::-webkit-scrollbar-thumb:hover
 
 .orderItem input[type=image]
 {
-  width: 150px;
+  max-width: 150px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
 }
 
 .singleOrderContainer small
 {
   color: #6b6b6b;
   padding-bottom: 2px;
+}
+
+#orderItem_ImgCell
+{
+  width: 150px;
+  align-items: center;
 }
 
 #orderItem_NummerCell

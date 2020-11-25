@@ -193,34 +193,15 @@ session_start();
                             <caption>Einkaufswagen</caption>
                             <?php
 
-                                function searchForID_Product($ID_Produkt, $array)
+                                if(isset($_GET['UpdatedShoppingCart']) && $_GET['UpdatedShoppingCart'] == TRUE)
                                 {
-                                    $n = 0;
-                                    foreach ($array as $entry)
-                                    {
-                                        if($entry['ID_Produkt'] == $ID_Produkt)
-                                        {
-                                            return $n;
-                                        }
-                                        else
-                                        {
-                                            $n++;
-                                        }
-                                    }
-                                    return FALSE;
+                                    echo "<caption class='shoppingCart-Table_Notice'>
+                                                <sub>Ihre änderungen wurden Gespeichert!</sub>
+                                        </caption>";
                                 }
 
-                                if(isset($_SESSION['ShoppingCart']) && !(empty($_SESSION['ShoppingCart'])))
+                                if(isset($_SESSION['ShoppingCart']) && !(empty($_SESSION['ShoppingCart'])) && $_SESSION['ShoppingCart'][0]['ID_Produkt'] != NULL)
                                 {
-                                    if(isset($_GET['UpdatedShoppingCart']) && $_GET['UpdatedShoppingCart'] == TRUE)
-                                    {
-                                        echo "<tr class='shoppingCart-Table_Notice'>
-                                                <td colspan='5'>
-                                                    Ihre änderungen wurden Gespeichert!
-                                                </td>
-                                            </tr>";
-                                    }
-
                                     echo"   <tr>
                                                 <th>Bild</th>
                                                 <th>Bezeichnung</th>
@@ -235,6 +216,7 @@ session_start();
                                     $dbpasswort   = "";
                                     $dbname   = "webshop";
 
+                                    $indexOfItem = 0;
                                     $totalCost = 0;
                                     $sqlOrderByString = '';
 
@@ -262,25 +244,27 @@ session_start();
                                     $sql .= "ORDER BY FIND_IN_SET(ID_Produkt,'" . $sqlOrderByString . "');";
                                     $sql = substr_replace($sql, "", strlen($sql) - 4, 1);
 
-                                    echo    "<tr><td colspan='5'>";
-                                    echo    $sql;
-                                    echo    "</td></tr>";
+                                    // Mit folgendem Code kann die sql-Abfrage und das ShoppingCart-Array
+                                    // im Einkaufswagen visualisiert werden
 
+                                    echo "<tr><td colspan='5'>";
+                                    echo     $sql;
+                                    echo "</td></tr>";
+                                    
+                                    foreach($shoppingCart as $i)
+                                    {
+                                        echo "<tr><td colspan='5'>";
+                                                 print_r($i);
+                                        echo "</td></tr>";
+                                    }
+                                    
                                     //SQL-Abfrage an die Datenbank senden
                                     $result = mysqli_query($dbh,$sql)
                                     or die ("Fehler bei der QUERY");
 
-                                    foreach($shoppingCart as $i)
-                                    {
-                                        echo    "<tr><td colspan='5'>";
-                                        print_r($i);
-                                        echo    "</td></tr>";
-                                    }
-
                                     //Ergebnis der SQL-Abfrage verarbeiten
                                     while($item = mysqli_fetch_row($result))
                                     {
-                                        $indexOfItem = searchForID_Product($item[3], $shoppingCart);
                                         $totalCost += $item[2] * $shoppingCart[$indexOfItem]['Menge'];
 
                                         echo "<tr>";
@@ -290,7 +274,7 @@ session_start();
                                                     <form action='product-view.php' method='get'>
                                                         <input type='hidden' name='ID_Produkt' value='$item[3]'> 
                                                         <input class='products_table_img' type='image' src='$link' alt='$link'>
-                                                    </form> 
+                                                    </form>
                                                 </td>";
 
                                         echo "<td id='table_zellen_bezeichnung'>" . $item[1] . "</td>";
@@ -323,22 +307,32 @@ session_start();
                                         echo "  <td id='table_zellen_preis'>" . $item[2] * $shoppingCart[$indexOfItem]['Menge'] . "€</td>";
                                         
                                         echo "</tr>";
+
+                                        $indexOfItem ++;
                                     }
                                     echo "  <tr><td id='table_zellen_preis' align='right' colspan='5' border='none'> Insgesamt:" . $totalCost . "€</td></tr>";
-                                    echo "  <tr><td id='table_zellen_preis' align='right' colspan='5' border='none'>
-                                                <form action='bestellung_anschrift.php' method='POST'>
-                                                    <input type='submit' value='Bestellen!'></input>
-                                                </form>
-                                            </td></tr>";
+                                    echo "  <tr>
+                                                <td id='table_zellen_actionButtons' colspan='5'>
+                                                    <div>
+                                                        <form action='deleteFromShoppingCart.php' method='POST'>
+                                                            <input type='hidden' name='ProductToDelete' value='0'></input>
+                                                            <input type='submit' value='Alle Produkte entfernen'></input>
+                                                        </form>
+
+                                                        <form action='bestellung_anschrift.php' method='POST'>
+                                                            <input type='submit' value='Bestellen!'></input>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>";
+
                                     mysqli_close($dbh);
                                 }
                                 else
                                 {
-                                    echo "  <tr class='shoppingCart-Table_Notice'>
-                                                <td colspan='5'>
-                                                    Es befinden sich keine Artikel im Einkaufswagen!
-                                                </td>
-                                            </tr>";
+                                    echo "<caption class='shoppingCart-Table_Notice'>
+                                                <h6>Es befinden sich keine Artikel im Einkaufswagen</h6>
+                                        </caption>";
                                 }
                             ?>
                         </table>

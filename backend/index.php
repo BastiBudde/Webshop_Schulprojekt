@@ -198,8 +198,7 @@ session_start();
                                    {
                                        echo "
                                            <tr>
-                                               <td> <h2>Benutzer<h2> </td>
-                                               <td> <h2> existiert nicht!<h2> </td>
+                                               <td> <h2>Benutzer existiert nicht!<h2> </td>
                                            </tr>";
                                    }
                                    elseif(isset($_GET['login_failure']) && $_GET['login_failure'] == 2)

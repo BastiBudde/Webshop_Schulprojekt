@@ -319,9 +319,9 @@ if(!(isset($_SESSION['user_login_korrekt'])))
                                     else
                                     {
                                         echo"<div class='orderItem flex-DirRow flex-SpaceBetween'>";
-                                        echo"   <div>
+                                        echo"   <div id='orderItem_ImgCell'>
                                                     <form action='product-view.php' method='GET'>
-                                                    <input type='hidden' name='ID_Produkt' value='".$item['ID_Produkt']."'></input>
+                                                        <input type='hidden' name='ID_Produkt' value='".$item['ID_Produkt']."'></input>
                                                         <input type='image' src='../".$item['Picture_Path']."' alt='".$item['Picture_Path']."'>
                                                     </form>
                                                 </div>

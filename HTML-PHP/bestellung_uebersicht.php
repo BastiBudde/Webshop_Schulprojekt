@@ -192,22 +192,7 @@ session_start();
                     <div>
                         <?php
 
-                            function searchForID_Product($ID_Produkt, $array)
-                            {
-                                $n = 0;
-                                foreach ($array as $entry)
-                                {
-                                    if($entry['ID_Produkt'] == $ID_Produkt)
-                                    {
-                                        return $n;
-                                    }
-                                    else
-                                    {
-                                        $n++;
-                                    }
-                                }
-                                return FALSE;
-                            }
+                            include "../includes/searchForID_Product.php";
 
                             if(isset($_SESSION['user_login_korrekt']) || isset($_POST['checkoutAsGuest']))
                             {
