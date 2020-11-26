@@ -193,6 +193,7 @@ session_start();
                         <?php
 
                             include "../includes/searchForID_Product.php";
+                            include "../includes/connectToDB.php";
 
                             if(isset($_SESSION['user_login_korrekt']) || isset($_POST['checkoutAsGuest']))
                             {
@@ -218,24 +219,11 @@ session_start();
                                 }
 
                                 //Variablen
-                                $dbserver   = "localhost";
-                                $dbuser   = "root";
-                                $dbpasswort   = "";
-                                $dbname   = "webshop";
-
                                 $totalCost = 0;
                                 $sqlOrderByString = '';
                                 $position = 1;
 
                                 $shoppingCart = $_SESSION['ShoppingCart'];
-
-                                //Verbindung zum Db-Server aufbauen
-                                $dbh = mysqli_connect($dbserver,$dbuser,$dbpasswort)
-                                    or die ("Fehler bie CONNECT");
-                                    
-                                //Verbindung zur Datenbank aufbauen
-                                mysqli_select_db($dbh,$dbname)
-                                    or die ("Fehler bei SELECT_DB");
 
                                 //SQL-Abfrage aufstellen
                                 $sql = "SELECT Picture_Path, Bezeichnung, Preis, ID_Produkt FROM produkt WHERE ";
@@ -325,7 +313,7 @@ session_start();
                                                     
                                                     <tr><td colspan='2'><input type='text' name='Telefon' value='$telefon' placeholder='Telefon'></input></td></tr>
 
-                                                    <tr><td><input type='submit' id='submit-button' value='Kostenpflichtig bestellen!' ></input></td></tr>
+                                                    <tr><td><input type='submit' class='button buttonSmall' value='Kostenpflichtig bestellen!' ></input></td></tr>
                                                 </form>
                                             </table>
                                         </div>";

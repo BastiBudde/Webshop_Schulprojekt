@@ -225,7 +225,7 @@ session_start();
                                         <td> <input id='password' type='password' name='password' size='30' placeholder='Passwort' required='true'> </td>
                                     </tr>
                                     <tr>
-                                        <td> <input type='submit' value='Absenden'> </td>
+                                        <td> <input type='submit' class='button buttonSmall' value='Absenden'> </td>
                                     </tr>
                 
                                 </form>    

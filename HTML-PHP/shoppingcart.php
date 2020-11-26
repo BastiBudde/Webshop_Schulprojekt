@@ -251,16 +251,16 @@ session_start();
                                     // Mit folgendem Code kann die sql-Abfrage und das ShoppingCart-Array
                                     // im Einkaufswagen visualisiert werden
 
-                                    echo "<tr><td colspan='5'>";
-                                    echo     $sql;
-                                    echo "</td></tr>";
+                                    // echo "<tr><td colspan='5'>";
+                                    // echo     $sql;
+                                    // echo "</td></tr>";
                                     
-                                    foreach($shoppingCart as $i)
-                                    {
-                                        echo "<tr><td colspan='5'>";
-                                                 print_r($i);
-                                        echo "</td></tr>";
-                                    }
+                                    // foreach($shoppingCart as $i)
+                                    // {
+                                    //     echo "<tr><td colspan='5'>";
+                                    //              print_r($i);
+                                    //     echo "</td></tr>";
+                                    // }
                                     
                                     //SQL-Abfrage an die Datenbank senden
                                     $result = mysqli_query($dbh,$sql)
@@ -298,7 +298,7 @@ session_start();
                                                             <option value='9'";if($shoppingCart[$indexOfItem]['Menge'] == 9){echo"selected";}echo">9</option>
                                                             <option value='10'";if($shoppingCart[$indexOfItem]['Menge'] == 10){echo"selected";}echo">10</option>
                                                         </select>
-                                                        <input type='submit' value='Speichern'>
+                                                        <input type='submit' class='button buttonSmall' value='Speichern'>
                                                     </form>
                                                     <form action='deleteFromShoppingCart.php' method='POST'>
                                                         <input type='hidden' name='ProductToDelete' value='$item[3]'>
@@ -314,19 +314,23 @@ session_start();
 
                                         $indexOfItem ++;
                                     }
-                                    echo "  <tr><td id='table_zellen_preis' align='right' colspan='5' border='none'> Insgesamt:" . $totalCost . "€</td></tr>";
                                     echo "  <tr>
-                                                <td id='table_zellen_actionButtons' colspan='5'>
-                                                    <div>
+                                                <td id='table_zellen_totalPreis' colspan='5'>
+                                                    <div>    
                                                         <form action='deleteFromShoppingCart.php' method='POST'>
                                                             <input type='hidden' name='ProductToDelete' value='0'></input>
-                                                            <input type='submit' value='Alle Produkte entfernen'></input>
+                                                            <input type='submit' class='button buttonSmall' value='Alle Produkte entfernen'></input>
                                                         </form>
-
-                                                        <form action='bestellung_anschrift.php' method='POST'>
-                                                            <input type='submit' value='Bestellen!'></input>
-                                                        </form>
+                                                        
+                                                        Insgesamt:" . $totalCost . "€
                                                     </div>
+                                                </td>
+                                            </tr>";
+                                    echo "  <tr>
+                                                <td id='table_zellen_actionButtons' colspan='5'>
+                                                    <form action='bestellung_anschrift.php' method='POST'>
+                                                        <input type='submit' class='button buttonNormal' value='Bestellen!'></input>
+                                                    </form>
                                                 </td>
                                             </tr>";
 

@@ -35,10 +35,9 @@ session_start();
             { 
                 $_SESSION['mitarbeiter_login_korrekt'] = true;
                 $_SESSION['mitarbeiter_Username'] = $username;
-                $_SESSION['mitarbeiter_Passwort'] = $password;
                 $_SESSION['mitarbeiter_Vorname'] = $fetched_result[2];
                 $_SESSION['mitarbeiter_Nachname'] = $fetched_result[3];
-                header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend.php");
+                header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_uebersicht.php");
             }
             else
             {

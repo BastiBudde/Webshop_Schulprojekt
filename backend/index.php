@@ -3,7 +3,7 @@ session_start();
 
     if($_SESSION['mitarbeiter_login_korrekt'] == true)
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend.php");
+        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_uebersicht.php");
     }
 ?>
 
@@ -218,7 +218,7 @@ session_start();
                                    <td> <input id='password' type='password' name='password' placeholder='Passwort' size='30' required='true'> </td>
                                </tr>
                                <tr>
-                                   <td> <input type='submit' value='Absenden'> </td>
+                                   <td> <input type='submit' class='button buttonSmall' value='Absenden'> </td>
                                </tr>
            
                            </form>    

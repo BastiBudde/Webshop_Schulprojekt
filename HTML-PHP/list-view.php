@@ -244,6 +244,7 @@
                                 elseif(!($kategorie == null))
                                 {
                                     $sql = "SELECT Picture_Path, Bezeichnung, Kurzbeschreibung, Preis, ID_Produkt  FROM produkt WHERE Kategorie = '$kategorie'";
+                                    
                                     if($kategorie == 'Maeuse')
                                     {
                                         $ueberschrift = 'Mäuse';

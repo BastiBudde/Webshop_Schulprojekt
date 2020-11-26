@@ -275,7 +275,7 @@
                                                 <form action='addToShoppingCart.php' method='POST'>
                                                     <label for='ID_Produkt'>$row[4]€</label>
                                                     <input type='hidden' name='ProductToAdd' value='$row[6]'>
-                                                    <input id='product-view-table_addToShoppingcart-Button' type='submit' value='In den Einkaufswagen!'>
+                                                    <input class='button buttonNormal fontBold' type='submit' type='submit' value='In den Einkaufswagen!'>
                                                 </form>
                                         </td>
                                     </tr>

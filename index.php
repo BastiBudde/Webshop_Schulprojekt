@@ -12,7 +12,7 @@ session_start();
 
     <title>
 
-        Startseite | Gaming Heaven
+        Gaming Heaven
 
     </title>
 

@@ -54,79 +54,20 @@ body::-webkit-scrollbar-thumb:hover
   background: #52acac;
 }
 
-.flex-DirCol
-{
-  display: flex;
-  flex-direction: column;
-}
-
-.flex-DirRow
-{
-  display: flex;
-  flex-direction: row;
-}
-
-.flex-SpaceBetween
-{
-  justify-content: space-between;
-}
-
-.lightGreyBg
-{
-  background-color: #bdbdbd;
-}
-
-.lightRoundedBorder
-{
-  border: 1px solid #bdbdbd;
-  border-radius: 5px;
-}
-
-.bigBlueRoundedBorder
-{
-  border: 2px solid #52acac;
-  border-radius: 10px;
-}
-
-.smallMarginBottom
-{
-  margin-bottom: 10px;
-}
-
-.middleMarginBottom
-{
-  margin-bottom: 20px;
-}
-
-.bigMarginBottom
-{
-  margin-bottom: 40px;
-}
-
-.textAlLeft
-{
-  text-align: left;
-}
-
-.textAlCenter
-{
-  text-align: center;
-}
-
-.textAlRight
-{
-  text-align: right;
-}
-
 .button
 {
+  margin: 1px;
   background-color: #52acac;
   border: 1px solid #2d7474;
+  box-shadow: 1px 1px 1px #777777;
+
+  text-decoration: none;
+  color: #000000;
 }
 
 .buttonSmall
 {
-  padding: 3px 5px;
+  padding: 4px 6px;
   border-radius: 4px;
   
   font-size: 13px;
@@ -138,21 +79,23 @@ body::-webkit-scrollbar-thumb:hover
   padding: 5px 10px;
   border-radius: 5px;
   
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 500;
 }
-
 
 .button:focus,
 .button:hover
 {
-  background-color: #2d7474;
-  border-color: #245050;
+  margin: 0;
+  text-decoration: underline;
+  border: 2px solid #245050;
+  outline: none;
 }
 
 .button:active
 {
-
+  background-color: #2d7474;
+  border-color: #245050;
 }
 
 .buttonAsLink
@@ -174,6 +117,11 @@ body::-webkit-scrollbar-thumb:hover
 {
   outline: none;
   text-decoration: underline;
+}
+
+.linkAsButton
+{
+
 }
 
 .notice-box
@@ -449,6 +397,7 @@ body::-webkit-scrollbar-thumb:hover
 
 .products_table #table_zellen_bild
 {
+  width: 50px;
   display: table-cell;
   vertical-align: middle;
 }
@@ -471,12 +420,6 @@ body::-webkit-scrollbar-thumb:hover
 {
   width: 130px;
   text-align: center;
-}
-
-.products_table #table_zellen_actionButtons
-{
-  display: flex;
-  flex-direction: column;
 }
 
 .footer
@@ -542,13 +485,6 @@ body::-webkit-scrollbar-thumb:hover
   padding-right: 20px;
 }
 
-#product-view-table_addToShoppingcart-Button
-{
-  font-size: large;
-  font-weight: 600;
-  height: 36px;
-}
-
 #product-view-table_kurzBeschreibungs-zelle
 {
   font-size: 22px;
@@ -598,6 +534,11 @@ body::-webkit-scrollbar-thumb:hover
   padding-bottom: 25px;
   display: flex;
   justify-content: space-between;
+}
+
+.backend-newDBdataInput-container table
+{
+  min-width: 500px;
 }
 
 .backend-newDBdataInput-container table td
@@ -690,10 +631,21 @@ body::-webkit-scrollbar-thumb:hover
   border: none;
 }
 
-.shoppingCart-Table #table_zellen_actionButtons div
+.shoppingCart-Table #table_zellen_totalPreis div
 {
   display: flex;
   justify-content: space-between;
+  padding: 10px 0;
+  text-align: right;
+  font-size: 20px;
+  border: none;
+}
+
+.shoppingCart-Table #table_zellen_actionButtons,
+.shoppingCart-Table #table_zellen_totalPreis
+{
+  border: none;
+  text-align: right;
 }
 
 
@@ -716,6 +668,12 @@ body::-webkit-scrollbar-thumb:hover
 {
   position: absolute;
   bottom: 0;
+}
+
+.checkoutAsGuest-Table input[type=text],
+.checkoutAsGuest-Table input[type=email],
+.checkoutAsGuest-Table input[type=number]
+{
   height: 30px;
   border-radius: 4px;
   border: 1px solid #d4d4d4;
@@ -731,7 +689,9 @@ body::-webkit-scrollbar-thumb:hover
   width: 90%;
 }
 
-.checkoutAsGuest-Table input:focus
+.checkoutAsGuest-Table input[type=text]:focus,
+.checkoutAsGuest-Table input[type=email]:focus,
+.checkoutAsGuest-Table input[type=number]:focus
 {
   outline: none;
   height: 30px;
@@ -760,25 +720,6 @@ body::-webkit-scrollbar-thumb:hover
   font-size: 16px;
 }
 
-.checkoutAsGuest-Table #submit-button
-{
-  background-color: #52acac;
-  width: 60px;
-  top: 20px;
-  right: 35px;
-}
-
-.checkoutAsGuest-Table #submit-button:focus
-{
-  outline: 2px solid #245050;
-}
-
-.checkoutAsGuest-Table #submit-button:active
-{
-  outline: none;
-  background-color: #2d7474;
-}
-
 .bestell-uebersicht_anschrift-container
 {
   position: absolute;
@@ -795,7 +736,9 @@ body::-webkit-scrollbar-thumb:hover
   font-weight: bold;
 }
 
-.bestell-uebersicht_anschrift-container input
+.bestell-uebersicht_anschrift-container input[type=text],
+.bestell-uebersicht_anschrift-container input[type=email],
+.bestell-uebersicht_anschrift-container input[type=number]
 {
   width: 100%;
   border: 1px solid #c5c5c5;
@@ -953,4 +896,77 @@ body::-webkit-scrollbar-thumb:hover
   background-color: #fdfdfd;
   border: solid 1px #bdbdbd;
   border-radius: 0.2em; 
+}
+
+
+
+
+
+.flex-DirCol
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-DirRow
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-SpaceBetween
+{
+  justify-content: space-between;
+}
+
+.lightGreyBg
+{
+  background-color: #bdbdbd;
+}
+
+.lightRoundedBorder
+{
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+}
+
+.bigBlueRoundedBorder
+{
+  border: 2px solid #52acac;
+  border-radius: 10px;
+}
+
+.smallMarginBottom
+{
+  margin-bottom: 10px;
+}
+
+.middleMarginBottom
+{
+  margin-bottom: 20px;
+}
+
+.bigMarginBottom
+{
+  margin-bottom: 40px;
+}
+
+.textAlLeft
+{
+  text-align: left;
+}
+
+.textAlCenter
+{
+  text-align: center;
+}
+
+.textAlRight
+{
+  text-align: right;
+}
+
+.fontBold
+{
+  font-weight: 700;
 }

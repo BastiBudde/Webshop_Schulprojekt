@@ -198,6 +198,7 @@ if(isset($_SESSION['user_login_korrekt']))
                     <div>
                         <?php
 
+
                             if(isset($_POST['checkoutAsGuest']))
                             {
                                 echo   "<table class='checkoutAsGuest-Table'>
@@ -251,7 +252,7 @@ if(isset($_SESSION['user_login_korrekt']))
                                                     <td colspan='2'>
                                                         <label>Mit * markierte Felder sind Pflichtfelder</label>
                                                         <input type='hidden' name='checkoutAsGuest' value=''></input>
-                                                        <input type='submit' value='Weiter' id='submit-button'></input>
+                                                        <input type='submit' class='button buttonNormal' value='Weiter'></input>
                                                     </td>
                                                 </tr>
 
@@ -261,21 +262,32 @@ if(isset($_SESSION['user_login_korrekt']))
                             }
                             else
                             {
-                                echo   "Sie sind derzeit nicht angemeldet! <br>
-                                        Bitte Wählen Sie eine der Folgenden Optionen:
-                                        <form action='user-login.php'>
-                                            <input type='submit' value='Einloggen'></input>
-                                        </form>
-
-                                        <form action='user-create.php'>
-                                            <input type='submit' value='Account erstellen'></input>
-                                        </form>
-
-                                        <form action='bestellung_anschrift.php' method='post'>
-                                            <input type='hidden' name='checkoutAsGuest' value=''></input>
-                                            <input type='submit' value='Als Gast fortfahren'></input>
-                                        </form>
-                                         ";
+                                echo   "<table>
+                                            <tr>
+                                                <td colspan='3'>
+                                                    Sie sind derzeit nicht angemeldet! <br>
+                                                    Bitte Wählen Sie eine der Folgenden Optionen:
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <form action='user-login.php'>
+                                                        <input type='submit' class='button buttonNormal' value='Einloggen'></input>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action='user-create.php'>
+                                                        <input type='submit' class='button buttonNormal' value='Account erstellen'></input>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action='bestellung_anschrift.php' method='post'>
+                                                        <input type='hidden' name='checkoutAsGuest' value=''></input>
+                                                        <input type='submit' class='button buttonNormal' value='Als Gast fortfahren'></input>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </table>";
                             }
                         
                         ?>
