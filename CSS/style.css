@@ -118,6 +118,43 @@ body::-webkit-scrollbar-thumb:hover
   text-align: right;
 }
 
+.button
+{
+  background-color: #52acac;
+  border: 1px solid #2d7474;
+}
+
+.buttonSmall
+{
+  padding: 3px 5px;
+  border-radius: 4px;
+  
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.buttonNormal
+{
+  padding: 5px 10px;
+  border-radius: 5px;
+  
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+.button:focus,
+.button:hover
+{
+  background-color: #2d7474;
+  border-color: #245050;
+}
+
+.button:active
+{
+
+}
+
 .buttonAsLink
 {
   background-color: transparent;
@@ -137,6 +174,40 @@ body::-webkit-scrollbar-thumb:hover
 {
   outline: none;
   text-decoration: underline;
+}
+
+.notice-box
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+
+  margin: 20px 40px 0 0;
+  padding: 20px 10px;
+  
+  background-color: #eeeeee;
+  border: 2px solid #52acac;
+  border-radius: 10px;
+  
+  color: #6b6b6b;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.notice-box a:link,
+.notice-box a:visited 
+{
+  text-decoration: none;
+  color: #2d7474;
+}
+
+.notice-box a:hover,
+.notice-box a:active
+{
+  text-decoration: underline;
+  color: #52acac;
 }
 
 .header
@@ -496,41 +567,7 @@ body::-webkit-scrollbar-thumb:hover
   padding-top: 10px;
 }
 
-/* Notiz wenn das Produkt zum Warenkorb hinzugefügt wurde */
-.addedToShoppingCart-notice
-{
-  position: absolute;
-  top: 154px;
-  left: 1440px;
-  font-size: 22px;
-  background-color: #52acac;
-  padding-top: 2px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 10px;
-  border-radius: 5px;
-}
 
-.addedToShoppingCart-notice a:link,
-.addedToShoppingCart-notice a:visited 
-{
-  text-decoration: none;
-  border-radius: 5px;
-  padding-top: 4px;
-  padding-bottom: 3px;
-  padding-left: 5px;
-}
-
-.addedToShoppingCart-notice a:hover,
-.addedToShoppingCart-notice a:active
-{
-  text-decoration: underline;
-  background-color: #50caca;
-  border-radius: 5px;
-  padding-top: 4px;
-  padding-bottom: 3px;
-  padding-left: 5px;
-}
 
 
 
@@ -575,13 +612,19 @@ body::-webkit-scrollbar-thumb:hover
 {
   font-size: large;
   width: 100%;
+  padding: 5px 5px;
   margin-bottom: 10px;
+  border: 1px solid #8d8d8d;
+  border-radius: 5px;
 }
 
 .backend-newDBdataInput-container textarea
 {
   width: 100%;
+  padding: 5px 5px;
   margin-bottom: 10px;
+  border: 1px solid #8d8d8d;
+  border-radius: 5px;
 }
 
 .backend-newDBdataInput-container input[type=number]
@@ -589,18 +632,23 @@ body::-webkit-scrollbar-thumb:hover
   height: 35px;
   font-size: large;
   margin-bottom: 10px;
+  padding: 5px 5px;
+  border: 1px solid #8d8d8d;
+  border-radius: 5px;
 }
 
 .backend-newDBdataInput-container select
 {
   font-size: large;
   margin-bottom: 10px;
+  padding: 5px 5px;
+  border: 1px solid #8d8d8d;
+  border-radius: 5px;
 }
 
 .backend-newDBdataInput-container #Bezeichnung
 {
-  font-size: large;
-  padding: 5px 0;
+  font-weight: 700;
 }
 
 
@@ -623,10 +671,17 @@ body::-webkit-scrollbar-thumb:hover
 
 .shoppingCart-Table caption
 {
-  font-size: 40px;
+  font-size: 35px;
+  font-weight: bold;
+  margin: 20px 0 40px 0;
+}
+
+/* .shoppingCart-Table caption sub
+{
+  font-size: 20px;
   font-weight: bold;
   padding-bottom: 30px;
-}
+} */
 
 .shoppingCart-Table_Notice
 {

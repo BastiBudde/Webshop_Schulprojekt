@@ -298,7 +298,7 @@ session_start();
                                                 <td> <input type='text' id='Bilderquelle' name='Bilderquelle' required='true'> </td>
                                             </tr>
                                             <tr>
-                                                <td> <br> <input type='submit' value='Speichern'></td>
+                                                <td> <br> <input type='submit' value='Speichern' class='button buttonSmall'></td>
                                             </tr>
                                             <tr>
                                                 <td colspan='3'> <div> <br> <br>*Bilder müssen in das verzeichnis 'Bilder' mit dem hier angegebenen Namen kopiert werden</div> </td>

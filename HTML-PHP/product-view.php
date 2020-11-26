@@ -292,8 +292,9 @@
                             if(isset($_GET['AddedToShoppingCart']) && $_GET['AddedToShoppingCart'] == True)
                             {
                                 echo"
-                                    <div class='addedToShoppingCart-notice'>
-                                        &#10004;&#65039; <a href='shoppingcart.php'>Erfolgreich hinzugefügt!</a>
+                                    <div class='notice-box'>
+                                        &#10004;&#65039; Erfolgreich hinzugefügt! <br>
+                                        <a href='shoppingcart.php'>Hier zum Einkaufswagen</a>
                                     </div>";
                             }
                         }

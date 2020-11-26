@@ -189,16 +189,20 @@ session_start();
            <td>
                 <article class="article">
 
-                        <table class='shoppingCart-Table'>
-                            <caption>Einkaufswagen</caption>
                             <?php
 
                                 if(isset($_GET['UpdatedShoppingCart']) && $_GET['UpdatedShoppingCart'] == TRUE)
                                 {
-                                    echo "<caption class='shoppingCart-Table_Notice'>
-                                                <sub>Ihre änderungen wurden Gespeichert!</sub>
-                                        </caption>";
+                                    echo"   <div class='notice-box'>
+                                                Ihre änderungen wurden Gespeichert!
+                                            </div>";
                                 }
+
+                                echo"<table class='shoppingCart-Table'>
+                                        <caption>
+                                            <h3>Einkaufswagen</h3>";
+                                echo"   </caption>";
+
 
                                 if(isset($_SESSION['ShoppingCart']) && !(empty($_SESSION['ShoppingCart'])) && $_SESSION['ShoppingCart'][0]['ID_Produkt'] != NULL)
                                 {
