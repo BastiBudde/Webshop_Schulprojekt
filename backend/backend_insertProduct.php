@@ -17,6 +17,7 @@
                     document.getElementById('Kategorie').options[1]=new Option('Action','Action');
                     document.getElementById('Kategorie').options[2]=new Option('Adventure','Adventure');
                     document.getElementById('Kategorie').options[3]=new Option('Science-Fiction','Science-Fiction');
+                    document.getElementById('Kategorie').remove(4);
                     break;
                 case 'Hardware' :
                     document.getElementById('Kategorie').options[0]=new Option('Kategorie wählen','');
@@ -30,7 +31,7 @@
                     document.getElementById('Kategorie').options[1]=new Option('Figuren','Figuren');
                     document.getElementById('Kategorie').options[2]=new Option('Kleidung','Kleidung');
                     document.getElementById('Kategorie').options[3]=new Option('Bettwäsche','Bettwaesche');
-                    document.getElementById('Kategorie').options[3]=new Option('Accessories','Accessories');
+                    document.getElementById('Kategorie').options[4]=new Option('Accessories','Accessories');
                     break;
                 }
                 return true;
@@ -41,14 +42,6 @@
     if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login_korrekt'] == true)
     {
 
-        if(isset($_GET['save_successfull']) && $_GET['save_successfull'] == True)
-        {
-            echo "
-                <div class='notice-box'> 
-                    Erfolgreich in Datenbank gespeichert!
-                </div>";
-        }
-
         echo "
             <div class='backend-newDBdataInput-container'>
 
@@ -56,6 +49,7 @@
 
                         <caption>
                             <div>
+                                <h2>Produkt einfügen</h2>
                                 <form action='backend-logout.php'>
                                     <input type='submit' value='Logout' class='button buttonSmall'>
                                 </form>
@@ -96,7 +90,7 @@
                             <td> <label for='Kategorie'>Kategorie</label> </td>
                             <td> 
                                 <script type='text/javascript' language='JavaScript'>
-                                    document.write(\"<select name='Kategorie' id='Kategorie' required='true'><option value=''>Select Kategorie</option></select>\")
+                                    document.write(\"<select name='Kategorie' id='Kategorie' required='true'><option value=''>Kategorie wählen</option></select>\")
                                 </script>
                                 <noscript>
                                     <select id='Kategorie' name='Kategorie'>

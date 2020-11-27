@@ -3,10 +3,19 @@
     include "../includes/siteFooter.php";
 
 
-    pageHead("Produkt Bearbeiten");
+    pageHead("Backend Übersicht");
 
     if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login_korrekt'] == true)
     {
+
+        if(isset($_GET['save_successfull']) && $_GET['save_successfull'] == True)
+        {
+            echo "
+                <div class='notice-box'> 
+                    Erfolgreich in Datenbank gespeichert!
+                </div>";
+        }
+
         echo "
         <div class='backend-newDBdataInput-container'>
 
@@ -29,7 +38,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href='backend_modifyProduct.php' class='button buttonNormal'>Produkt bearbeiten</a>
+                            <a href='backend_search.php' class='button buttonNormal'>Produkt bearbeiten</a>
                         </td>
                     </tr>
                 

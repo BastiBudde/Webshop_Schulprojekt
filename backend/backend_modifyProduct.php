@@ -1,4 +1,9 @@
 <?php
+    if(!isset($_POST['ID_Produkt']))
+    {
+        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_search.php");
+    }
+    
     include "../includes/siteHeader.php";
     include "../includes/siteFooter.php";
     include "../includes/connectToDB.php";
@@ -17,6 +22,7 @@
                     document.getElementById('Kategorie').options[1]=new Option('Action','Action');
                     document.getElementById('Kategorie').options[2]=new Option('Adventure','Adventure');
                     document.getElementById('Kategorie').options[3]=new Option('Science-Fiction','Science-Fiction');
+                    document.getElementById('Kategorie').remove(4);
                     break;
                 case 'Hardware' :
                     document.getElementById('Kategorie').options[0]=new Option('Kategorie wählen','');
@@ -30,7 +36,7 @@
                     document.getElementById('Kategorie').options[1]=new Option('Figuren','Figuren');
                     document.getElementById('Kategorie').options[2]=new Option('Kleidung','Kleidung');
                     document.getElementById('Kategorie').options[3]=new Option('Bettwäsche','Bettwaesche');
-                    document.getElementById('Kategorie').options[3]=new Option('Accessories','Accessories');
+                    document.getElementById('Kategorie').options[4]=new Option('Accessories','Accessories');
                     break;
                 }
                 return true;
@@ -40,115 +46,103 @@
 
     if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login_korrekt'] == true)
     {
-        if(isset($_POST['Suchart']))
-        {
+        //SQL-Abfrage aufstellen
+        $sql = "SELECT Bezeichnung, Kurzbeschreibung,  Beschreibung, Preis, Sparte, Picture_Path, Bilderquelle
+                FROM produkt
+                WHERE ID_Produkt = ".$_POST['ID_Produkt'];
 
-            if(isset($_GET['save_successfull']) && $_GET['save_successfull'] == True)
-            {
-                echo "
-                    <div class='notice-box'> 
-                        Erfolgreich in Datenbank gespeichert!
-                    </div>";
-            }
+        echo"<div class='notice-box'>".$sql."</div>";
 
-            if($_POST['Suchart'] == 'ID')
-            {
-                $sql = "SELECT Picture_Path, Bezeichnung, Kurzbeschreibung, Preis, ID_Produkt  
-                        FROM produkt 
-                        WHERE ID_Produkt = ".$_POST['Suchbegriff'].";";
-            }
-            else
-            {
-                $sql = "SELECT Picture_Path, Bezeichnung, Kurzbeschreibung, Preis, ID_Produkt  
-                        FROM produkt 
-                        WHERE Bezeichnung LIKE '%".$_POST['Suchbegriff']."%';";
-            }
+        //SQL-Abfrage an die Datenbank senden
+        $result = mysqli_query($dbh,$sql)
+        or die ("Fehler bei der QUERY" . mysqli_error($dbh));
 
-            //SQL-Abfrage an die Datenbank senden
-            $result = mysqli_query($dbh,$sql)
-            or die ("Fehler bei der QUERY");
+        $fetched_result = mysqli_fetch_row($result);
 
+        echo "
+            <div class='backend-newDBdataInput-container'>
 
-        echo "  <table class='products_table'>
-                    <tr>
-                        <th>Bild</th>
-                        <th>Bezeichnung</th>
-                        <th>Kurzbeschreibung</th>
-                        <th>Preis in Euro</th>
-                    </tr>";
-            
-            $h = 0;
+                    <table>
 
-            //Ergebnis der SQL-Abfrage verarbeiten
-            while($row=mysqli_fetch_row($result))
-            {
-                echo "<tr>";
-                foreach($row as $i)
-                {
-                    if($h == 0)
-                    {
-                        $i = "../" . $i;
-                        echo "  <td id='table_zellen_bild'> 
-                                    <form action='product-view.php' method='get'>
-                                        <input type='hidden' name='ID_Produkt' value='$row[4]'> 
-                                        <input class='products_table_img' type='image' src='$i' alt='$i'>
-                                    </form> 
-                                </td>";
-                    }
-                    else if($h == 1)
-                    {
-                        echo "<td id='table_zellen_bezeichnung'> $i </td>";
-                    }
-                    else if($h == 2)
-                    {
-                        echo "<td id='table_zellen_kurzbeschreibung'> $i </td>";
-                    }
-                    else if($h == 3)
-                    {
-                        echo "<td id='table_zellen_preis'> $i €</td>";
-                    }
-                    $h++;
-                }
-                echo "</tr>";
-                $h = 0;
-            }
-            echo"</table>";
-        }
-        else
-        {
-            echo"   <div class='backend-newDBdataInput-container'>
-                        <table>
-                            <caption>
-                                <div>
-                                    <h2>Wonach wollen Sie suchen?</h2>
-                                </div>
-                            </caption>
+                        <caption>
+                            <div>
+                                <h2>Produkt Bearbeiten</h2>
+                                <form action='backend-logout.php'>
+                                    <input type='submit' value='Logout' class='button buttonSmall'>
+                                </form>
+                            </div>
+                        </caption>";
 
-                            <form actoin='backend_modifyProduct.php' method='post'>
-                                <tr>
-                                    <td>
-                                        <label for='Suchbegriff'>Suchbegriff/Produkt ID</label>
-                                        <input type='textarea' name='Suchbegriff' id='Suchbegriff' required='true'></input>
-                                    </td> 
-                                </tr>
-                                <tr> 
-                                    <td>  
-                                        <input type='radio' name='Suchart' value='ID' id='id' required='true'></input>
-                                        <label for='ID'>Produkt ID</label>
+                echo"          
                                         
-                                        <input type='radio' name='Suchart' value='Bezeichnung' id='bezeichznung'></input>
-                                        <label for='bezeichnung'>Bezeichnung</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type='submit' value='Suchen' class='button buttonSmall'></input>
-                                    </td>
-                                </tr>
-                            </form>
-                        </table>
-                    </div>";
-        }
+                    <form action='updateDB.php' method='POST'>
+                        <input type='hidden' name='ID_ProduktToUpdate' value='".$_POST['ID_Produkt']."'></input>
+                        
+                        <tr>
+                            <td> <label for='Bezeichnung'>Bezeichnung</label> </td>
+                            <td> <input type='text' value='".$fetched_result[0]."'id='Bezeichnung' class='Bezeichnung' name='Bezeichnung' required='true' maxlength='35'> </td>
+                        </tr>
+                        <tr>
+                            <td> <label for='Kurzbeschreibung'>Kurzbeschreibung</label> </td>
+                            <td> <textarea rows='5' cols='60' id='Kurzbeschreibung' name='Kurzbeschreibung' required='true'>".$fetched_result[1]."</textarea></td>
+                        </tr>
+                        <tr>
+                            <td> <label for='Beschreibung'>Beschreibung</label> </td>
+                            <td> <textarea rows='15' cols='60' id='Beschreibung' name='Beschreibung' required='true'>".$fetched_result[2]."</textarea></td>
+                        </tr>
+                        <tr>
+                            <td> <label for='Preis'>Preis</label> </td>
+                            <td> <input type='number' value='".floatval($fetched_result[3])."' id='Preis' name='Preis' required='true' min='0' max='999.99' step='0.01'> </td>
+                        </tr>
+                        <tr>
+                            <td> <label for='Sparte'>Sparte</label> </td>
+                            <td> 
+                                <select id='Sparte' name='Sparte' required='true' onchange='javascript: dynamicdropdown(this.options[this.selectedIndex].value);'>
+                                    <option value=''>Sparte Wählen</option>
+                                    <option value='Games'>Games</option>
+                                    <option value='Hardware'>Hardware</option>
+                                    <option value='Fanartikel'>Fanartikel</option>
+                                </select>
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td> <label for='Kategorie'>Kategorie</label> </td>
+                            <td> 
+                                <script type='text/javascript' language='JavaScript'>
+                                    document.write(\"<select name='Kategorie' id='Kategorie' required='true'><option value=''>Select Kategorie</option></select>\")
+                                </script>
+                                <noscript>
+                                    <select id='Kategorie' name='Kategorie'>
+                                    </select>
+                                </noscript>
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td> <label for='Picture_Path'>Bilder-Pfad*</label> </td>
+                            <td> <input type='text' value='".$fetched_result[5]."' id='Picture_Path' name='Picture_Path' required='true' value='Bilder/'> </td>
+                        </tr>
+                        <tr>
+                            <td> <label for='Bilderquelle'>Bilderquelle</label> </td> 
+                            <td> <input type='text' value='".$fetched_result[6]."' id='Bilderquelle' name='Bilderquelle' required='true'> </td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>
+                                <div class='flex-DirRow flex-SpaceBetween'> 
+                                    <input type='submit' value='Speichern' class='button buttonNormal'></input>
+                                    <a href='deleteProduct.php?productToDelete=".$_POST['ID_Produkt']."' class='button buttonNormal'>Löschen</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan='3'> <div> <br> <br>*Bilder müssen in das verzeichnis 'Bilder' mit dem hier angegebenen Namen kopiert werden</div> </td>
+                        </tr>
+
+                    </form>
+
+                </table>
+
+        </div>"; 
+
     }
     else
     {
