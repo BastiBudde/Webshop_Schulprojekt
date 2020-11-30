@@ -276,7 +276,7 @@ if(isset($_SESSION['user_login_korrekt']))
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form action='user-create.php'>
+                                                    <form action='create_user.php'>
                                                         <input type='submit' class='button buttonNormal' value='Account erstellen'></input>
                                                     </form>
                                                 </td>

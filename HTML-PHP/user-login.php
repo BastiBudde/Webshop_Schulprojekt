@@ -225,7 +225,12 @@ session_start();
                                         <td> <input id='password' type='password' name='password' size='30' placeholder='Passwort' required='true'> </td>
                                     </tr>
                                     <tr>
-                                        <td> <input type='submit' class='button buttonSmall' value='Absenden'> </td>
+                                        <td> 
+                                            <div class='flex-DirRow flex-SpaceBetween'>
+                                                <input type='submit' class='button buttonSmall' value='Absenden'>
+                                                <a href='create_user.php' class='button buttonSmall'>Benutzer erstellen</a>
+                                            </div>
+                                        </td>
                                     </tr>
                 
                                 </form>    
