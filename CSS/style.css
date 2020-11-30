@@ -652,46 +652,42 @@ body::-webkit-scrollbar-thumb:hover
 
 
 
-.checkoutAsGuest-Table
+.costomerInformationTable
 {
   text-align: left;
 }
 
-.checkoutAsGuest-Table td
+.costomerInformationTable td
 {
   height: 75px;
   width: 450px;
   position: relative;
 }
 
-.checkoutAsGuest-Table input
+.costomerInformationTable input
 {
   position: absolute;
   bottom: 0;
 }
 
-.checkoutAsGuest-Table input[type=text],
-.checkoutAsGuest-Table input[type=email],
-.checkoutAsGuest-Table input[type=number]
+.inputForm
 {
   height: 30px;
   border-radius: 4px;
   border: 1px solid #d4d4d4;
 }
 
-.checkoutAsGuest-Table #long-input
+.longInput
 {
   width: 95%;
 }
 
-.checkoutAsGuest-Table #short-input
+.shortInput
 {
   width: 90%;
 }
 
-.checkoutAsGuest-Table input[type=text]:focus,
-.checkoutAsGuest-Table input[type=email]:focus,
-.checkoutAsGuest-Table input[type=number]:focus
+.inputForm:focus
 {
   outline: none;
   height: 30px;
@@ -713,7 +709,7 @@ body::-webkit-scrollbar-thumb:hover
   -moz-appearance: textfield;
 }
 
-.checkoutAsGuest-Table label
+.costomerInformationTable label
 {
   position: absolute;
   bottom: 37px;

@@ -51,7 +51,6 @@
                 FROM produkt
                 WHERE ID_Produkt = ".$_POST['ID_Produkt'];
 
-        echo"<div class='notice-box'>".$sql."</div>";
 
         //SQL-Abfrage an die Datenbank senden
         $result = mysqli_query($dbh,$sql)

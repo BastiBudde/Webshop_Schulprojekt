@@ -228,7 +228,7 @@ session_start();
                                         <td> 
                                             <div class='flex-DirRow flex-SpaceBetween'>
                                                 <input type='submit' class='button buttonSmall' value='Absenden'>
-                                                <a href='create_user.php' class='button buttonSmall'>Benutzer erstellen</a>
+                                                <a href='user-create_account.php' class='button buttonSmall'>Konto erstellen</a>
                                             </div>
                                         </td>
                                     </tr>
