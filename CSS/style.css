@@ -507,17 +507,35 @@ body::-webkit-scrollbar-thumb:hover
 
 
 
-.backend-logindata-container
+.logindata-container
 {
-  padding-top: 100px;
+  padding-top: 75px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
 }
 
-.backend-logindata-container table
+.logindata-container table
 {
   text-align: left;
+  width: 650px;
+}
+
+.logindata-container caption
+{
+  margin-bottom: 40px;
+}
+
+.logindata-container div div
+{
+  width: 300px;
+}
+
+.logindata-container input[type=text],
+.logindata-container input[type=password]
+{
+  margin-bottom: 5px;
+  width: 100%;
 }
 
 .backend-newDBdataInput-container
@@ -912,6 +930,12 @@ body::-webkit-scrollbar-thumb:hover
 .flex-SpaceBetween
 {
   justify-content: space-between;
+}
+
+.flex-Center
+{
+  justify-content: center;
+  align-items: center;
 }
 
 .lightGreyBg

@@ -189,7 +189,7 @@ session_start();
            <td>
                <article class="article">
                    
-                   <div class='backend-logindata-container'>
+                   <div class='logindata-container'>
                        <table>
                            <form action='backend-login.php' method='POST'>
            
@@ -197,28 +197,32 @@ session_start();
                                    if(isset($_GET['login_failure']) && $_GET['login_failure'] == 1)
                                    {
                                        echo "
-                                           <tr>
-                                               <td> <h2>Benutzer existiert nicht!<h2> </td>
-                                           </tr>";
+                                           <caption>
+                                               <h2>Benutzer existiert nicht!<h2>
+                                           </caption>";
                                    }
                                    elseif(isset($_GET['login_failure']) && $_GET['login_failure'] == 2)
                                    {
                                        echo "
-                                           <tr>
-                                               <td> <h2>Benutzername<h2> </td>
-                                               <td> <h2> und Passwort stimmen nicht überein!<h2> </td>
-                                           </tr>";
+                                           <caption>
+                                               <h2>Benutzername und Passwort stimmen nicht überein!<h2>
+                                           </caption>";
                                    }
                                ?>
                            
                                <tr>
-                                   <td> <input id='username' type='text' name='username' placeholder='Benutzer' size='30' required='true'> </td>
-                               </tr>
-                               <tr>
-                                   <td> <input id='password' type='password' name='password' placeholder='Passwort' size='30' required='true'> </td>
-                               </tr>
-                               <tr>
-                                   <td> <input type='submit' class='button buttonSmall' value='Absenden'> </td>
+                                   <td> 
+                                        <div class='flex-DirCol flex-Center'>
+                                            <div>
+                                                <input class='inputForm longInput' id='username' type='text' name='username' placeholder='Benutzer' size='30' required='true'>
+                                                <input class='inputForm longInput' id='password' type='password' name='password' placeholder='Passwort' size='30' required='true'>
+                                            </div>
+
+                                            <div>
+                                                <input type='submit' class='button buttonSmall' value='Absenden'>
+                                            </div>
+                                        </div>    
+                                    </td>
                                </tr>
            
                            </form>    

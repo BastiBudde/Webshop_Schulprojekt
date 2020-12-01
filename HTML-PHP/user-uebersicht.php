@@ -217,10 +217,6 @@ if(!(isset($_SESSION['user_login_korrekt'])))
                                             </td>
                                         </tr>
 
-                                        <tr>
-
-                                        </td>
-
                                     </table>";
 
                             
