@@ -2,8 +2,7 @@
 
     function pageHead($title = "")
     {
-        session_start();
-        
+
         $page = "   
         
         <!DOCTYPE html>
@@ -194,6 +193,13 @@
                         <article class='article'>";
 
             echo $page;
+
+            if(isset($_GET['notice']))
+            {
+                echo"<div class='notice-box'>
+                        ".$_GET['notice']."
+                    </div>";
+            }
     }
 
 ?>

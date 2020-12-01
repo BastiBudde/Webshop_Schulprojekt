@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     include "../includes/siteHeader.php";
     include "../includes/siteFooter.php";
     include "../includes/connectToDB.php";

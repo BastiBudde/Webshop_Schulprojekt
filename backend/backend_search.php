@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     include "../includes/siteHeader.php";
     include "../includes/siteFooter.php";
     include "../includes/connectToDB.php";
@@ -42,14 +44,6 @@
     {
         if(isset($_POST['Suchart']))
         {
-
-            if(isset($_GET['save_successfull']) && $_GET['save_successfull'] == True)
-            {
-                echo "
-                    <div class='notice-box'> 
-                        Erfolgreich in Datenbank gespeichert!
-                    </div>";
-            }
 
             if($_POST['Suchart'] == 'ID')
             {

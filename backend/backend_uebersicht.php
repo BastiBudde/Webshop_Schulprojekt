@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     include "../includes/siteHeader.php";
     include "../includes/siteFooter.php";
 
@@ -7,14 +9,6 @@
 
     if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login_korrekt'] == true)
     {
-
-        if(isset($_GET['notice']))
-        {
-            echo "
-                <div class='notice-box'> 
-                    ".$_GET['notice']."
-                </div>";
-        }
 
         echo "
         <div class='backend-newDBdataInput-container'>

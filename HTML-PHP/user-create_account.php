@@ -1,16 +1,12 @@
 <?php
+    session_start();
+    
     include "../includes/siteHeader.php";
     include "../includes/siteFooter.php";
     include "../includes/connectToDB.php";
 
     pageHead("Konto erstellen");
 
-    if(isset($_GET['notice']))
-    {
-        echo"<div class='notice-box'>
-            ".$_GET['notice']."
-            </div>";
-    }
 
     echo   "<table class='costomerInformationTable'>
                 <caption>Bitte geben Sie ihre Kontaktdaten an! <br><br></caption>

@@ -19,7 +19,7 @@
             $telefon = "NULL";
         }
 
-        $sql = "INSERT INTO kunde   (Vorname, Nachname, E_Mail, Passwort, PLZ, Ort, Strasse_Hausnr, Telefon)
+        $sql = "INSERT INTO kunde   (Vorname, Name, E_Mail, Passwort, PLZ, Ort, Strasse_Hausnr, Telefon)
                 VALUES ('".$_POST['Vorname'].       "',
                         '".$_POST['Nachname'].      "',
                         '".$_POST['E_Mail'].        "',
@@ -29,7 +29,11 @@
                         '".$_POST['Strasse_Hausnr']."',
                         '".$telefon."');";
         
-        echo $sql;
+        //SQL-Abfrage an die Datenbank senden
+        mysqli_query($dbh,$sql)
+        or die ("Fehler bei der QUERY". mysqli_error($dbh));
+
+        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php?notice=Konto erfolgreich angelegt");
     }
     else
     {

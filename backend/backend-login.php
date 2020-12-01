@@ -41,12 +41,12 @@ session_start();
             }
             else
             {
-                header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/index.php?login_failure=2&"); //Lässt index.php die Rückmeldung geben, dass Benutzername und Passwort nicht übereinstimmen
+                header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/index.php?login_failure=2"); //Lässt index.php die Rückmeldung geben, dass Benutzername und Passwort nicht übereinstimmen
             }
         }
         else
         {
-            header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/index.php?login_failure=1&"); //Lässt index.php die Rückmeldung geben, dass der Benutzer nicht existiert
+            header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/index.php?login_failure=1"); //Lässt index.php die Rückmeldung geben, dass der Benutzer nicht existiert
         }
     }
     else
