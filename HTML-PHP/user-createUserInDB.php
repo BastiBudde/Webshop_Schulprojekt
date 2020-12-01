@@ -33,8 +33,7 @@
     }
     else
     {
-        $_POST['Notice'] = "Fehler beim anlegen ihres Kontos!";
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/user-create_account.php"); 
+        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-create_account.php?notice=Fehler beim anlegen ihres Kontos!"); 
     }
 
 ?>

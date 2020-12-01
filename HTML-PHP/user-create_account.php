@@ -5,10 +5,10 @@
 
     pageHead("Konto erstellen");
 
-    if(isset($_POST['Notice']))
+    if(isset($_GET['notice']))
     {
-        echo"<div class='notice-box>
-            ".$_POST['Notice']."
+        echo"<div class='notice-box'>
+            ".$_GET['notice']."
             </div>";
     }
 
@@ -19,11 +19,11 @@
                     <tr>
                         <td>
                             <label for='Vorname'>Vorname*</label>
-                            <input type='text' name='Vorname' class ='inputForm shortInput' id='Vorname' required='true' ></input>
+                            <input type='text' name='Vorname' class ='inputForm shortInput' id='Vorname' required='true' placeholder='Max'></input>
                         </td>
                         <td>
                             <label for='Nachname'>Nachname*</label>
-                            <input type='text' name='Nachname' class ='inputForm shortInput' id='Nachname'  placeholder='Mustermann'></input>
+                            <input type='text' name='Nachname' class ='inputForm shortInput' id='Nachname' required='true' placeholder='Mustermann'></input>
                         </td>
                     </tr>
 
