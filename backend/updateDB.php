@@ -7,9 +7,9 @@
 
         $sql = "UPDATE produkt
                 SET ID_Produkt =         ".$_POST['ID_ProduktToUpdate'].",
-                    Bezeichnung =       '".$_POST['Bezeichnung']."', 
-                    Kurzbeschreibung =  '".$_POST['Kurzbeschreibung']."',
-                    Beschreibung =      '".$_POST['Beschreibung']."',
+                    Bezeichnung =       '".htmlentities($_POST['Bezeichnung'])."', 
+                    Kurzbeschreibung =  '".nl2br(htmlentities($_POST['Kurzbeschreibung']))."',
+                    Beschreibung =      '".nl2br(htmlentities($_POST['Beschreibung']))."',
                     Preis =              ".$_POST['Preis'].",
                     Sparte =            '".$_POST['Sparte']."',
                     Kategorie =         '".$_POST['Kategorie']."',
@@ -21,8 +21,7 @@
         mysqli_query($dbh,$sql)
         or die ("Fehler bei der QUERY:". $sql);
 
-
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_uebersicht.php?save_successfull=True"); 
+        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_uebersicht.php?notice=Änderungen erfolgreich gespeichert!"); 
     }
     else
     {

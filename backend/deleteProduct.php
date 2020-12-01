@@ -13,7 +13,7 @@
         mysqli_query($dbh,$sql)
         or die ("Fehler bei der QUERY");
 
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_uebersicht.php?save_successfull=True"); 
+        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_uebersicht.php?notice=Produkt erfolgreich gelöscht"); 
     }
     else
     {

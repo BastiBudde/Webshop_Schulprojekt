@@ -8,11 +8,11 @@
     if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login_korrekt'] == true)
     {
 
-        if(isset($_GET['save_successfull']) && $_GET['save_successfull'] == True)
+        if(isset($_GET['notice']))
         {
             echo "
                 <div class='notice-box'> 
-                    Erfolgreich in Datenbank gespeichert!
+                    ".$_GET['notice']."
                 </div>";
         }
 
