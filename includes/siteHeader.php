@@ -13,12 +13,7 @@
             <link rel='stylesheet' href='../CSS/style.css'>
             <link rel='icon' href='../Bilder/icons/favicon.ico'>
 
-            <title>
-
-                ".$title." | Gaming Heaven
-
-            </title>
-
+            <title>".$title." | Gaming Heaven</title>
         </head>
 
         <body>
@@ -190,7 +185,7 @@
             <table class='artilcle-footer-table'>
                 <tr>
                 <td>
-                        <article class='article'>";
+                    <article class='article'>";
 
             echo $page;
 

@@ -1,24 +1,13 @@
 <?php
-session_start();
+    session_start();
 
     if(isset($_POST['e-Mail']) && isset($_POST['password']))
     {
-        $dbserver   = "localhost";
-        $dbuser   = "root";
-        $dbpasswort   = "";
-        $dbname   = "webshop";
+        include "../includes/connectToDB.php";
         
         //Eingegebene E-Mail-Adresse wird zu Lowercase formatiert, da alle E-Mail-Adressen in Lowercase in der Datenbank gespeichert werden
         $e_mail = strtolower($_POST['e-Mail']);
         $password = $_POST['password'];
-
-        //Verbindung zum Db-Server aufbauen
-        $dbh = mysqli_connect($dbserver,$dbuser,$dbpasswort)
-        or die ("Fehler bie CONNECT");
-
-        //Verbindung zur Datenbank aufbauen
-        mysqli_select_db($dbh,$dbname)
-            or die ("Fehler bei SELECT_DB");
 
         //SQL-Abfrage aufstellen
         $sql = "SELECT E_Mail, Passwort, Vorname, Name, PLZ, Ort, Strasse_Hausnr, Telefon, ID_Kunde Name FROM kunde WHERE E_Mail = '$e_mail'";
@@ -48,12 +37,12 @@ session_start();
             }
             else
             {
-                header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php?login_failure=2&"); //Lässt auf user-login.php die Rückmeldung geben, dass E-Mail und Passwort nicht übereinstimmen
+                header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php?notice=Benutzer und Passwort stimmen nicht überein"); //Lässt auf user-login.php die Rückmeldung geben, dass E-Mail und Passwort nicht übereinstimmen
             }
         }
         else
         {
-            header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php?login_failure=1&"); //Lässt auf user-login.php die Rückmeldung geben, dass der Benutzer nicht existiert
+            header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php?notice=Benutzer existiert nicht"); //Lässt auf user-login.php die Rückmeldung geben, dass der Benutzer nicht existiert
         }
     }
     else

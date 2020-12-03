@@ -58,7 +58,7 @@
                     <tr>
                         <td colspan='2'>
                             <label for='Passwort'>Passwort*</label>
-                            <input type='text' name='Passwort' class ='inputForm longInput' id='pASSWORT' required='true' placeholder='Z*ifb2PH$@oH-#>'></input>
+                            <input type='text' name='Passwort' class ='inputForm longInput' id='Passwort' required='true' placeholder='Z*ifb2PH$@oH-#>'></input>
                         </td>
                     </tr>
                     

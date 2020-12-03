@@ -12,44 +12,23 @@
 
     pageHead("Login");
     
-    echo"   <div class='logindata-container'>
-                <table>
-                    <form action='user-login-verification.php' method='POST'>";
+   echo"<div class='logindata-container'>    
 
-                            if(isset($_GET['login_failure']) && $_GET['login_failure'] == 1)
-                            {
-                                echo "
-                                    <caption>
-                                        <h2>Benutzer existiert nicht!<h2>
-                                    </caption>";
-                            }
-                            elseif(isset($_GET['login_failure']) && $_GET['login_failure'] == 2)
-                            {
-                                echo "
-                                    <caption>
-                                        <h2>Benutzername und Passwort stimmen nicht überein!<h2>
-                                    </caption>";
-                            }
-                    
-                   echo"<tr>
-                            <td>
-                                <div class='flex-DirCol flex-Center'>
-                                    <div> 
-                                        <input class='inputForm longInput' id='e-Mail' type='text' name='e-Mail' size='30' placeholder='E-Mail' required='true'> 
-                                        <input class='inputForm longInput' id='password' type='password' name='password' size='30' placeholder='Passwort' required='true'>
-                                    </div>
+            <form action='user-login-verification.php' method='POST'>
+                <div class='flex-DirCol flex-Center'>
+                    <div> 
+                        <input class='inputForm longInput' id='e-Mail' type='text' name='e-Mail' size='30' placeholder='E-Mail' required='true'> 
+                        <input class='inputForm longInput' id='password' type='password' name='password' size='30' placeholder='Passwort' required='true'>
+                    </div>
 
-                                    <div class='flex-DirRow flex-SpaceBetween'>
-                                        <input type='submit' class='button buttonSmall' value='Absenden'>
-                                        <a href='user-create_account.php' class='button buttonSmall'>Konto erstellen</a>
-                                    </div>
-                                <div>
-                            </td>
-                        </tr>
-
-                    </form>    
-                </table>
-            </div>";
+                    <div class='flex-DirRow flex-SpaceBetween'>
+                        <input type='submit' class='button buttonSmall' value='Absenden'>
+                        <a href='user-create_account.php' class='button buttonSmall'>Konto erstellen</a>
+                    </div>
+                <div>
+            </form>    
+            
+        </div>";
     
     pageFooter();
 ?>

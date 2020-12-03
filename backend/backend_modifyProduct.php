@@ -130,7 +130,7 @@
                             <td colspan='2'>
                                 <div class='flex-DirRow flex-SpaceBetween'> 
                                     <input type='submit' value='Speichern' class='button buttonNormal'></input>
-                                    <a href='deleteProduct.php?productToDelete=".$_POST['ID_Produkt']."' class='button buttonNormal' onclick='return confirm(\"Wollen sie dieses Produkt wirklich löschen?\");'>Löschen</a>
+                                    <a href='deleteProduct.php?productToDelete=".$_POST['ID_Produkt']."' class='button buttonNormal' onclick='return confirm(\"Wollen Sie dieses Produkt wirklich löschen?\");'>Löschen</a>
                                 </div>
                             </td>
                         </tr>

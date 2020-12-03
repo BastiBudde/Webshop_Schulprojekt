@@ -3,21 +3,7 @@ session_start();
 
     if(isset($_POST['username']) && isset($_POST['password']))
     {
-        $dbserver   = "localhost";
-        $dbuser   = "root";
-        $dbpasswort   = "";
-        $dbname   = "webshop";
-        
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        //Verbindung zum Db-Server aufbauen
-        $dbh = mysqli_connect($dbserver,$dbuser,$dbpasswort)
-        or die ("Fehler bie CONNECT");
-
-        //Verbindung zur Datenbank aufbauen
-        mysqli_select_db($dbh,$dbname)
-            or die ("Fehler bei SELECT_DB");
+        include "../includes/connectToDB.php";
 
         //SQL-Abfrage aufstellen
         $sql = "SELECT Benutzername, Passwort, Vorname, Name FROM mitarbeiter WHERE Benutzername = '$username'";
@@ -41,12 +27,12 @@ session_start();
             }
             else
             {
-                header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/index.php?login_failure=2"); //Lässt index.php die Rückmeldung geben, dass Benutzername und Passwort nicht übereinstimmen
+                header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/index.php?notice=Benutzername und Passwort stimmen nicht überein"); //Lässt index.php die Rückmeldung geben, dass Benutzername und Passwort nicht übereinstimmen
             }
         }
         else
         {
-            header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/index.php?login_failure=1"); //Lässt index.php die Rückmeldung geben, dass der Benutzer nicht existiert
+            header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/index.php?notice=Benutzer existiert nicht"); //Lässt index.php die Rückmeldung geben, dass der Benutzer nicht existiert
         }
     }
     else

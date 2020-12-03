@@ -10,13 +10,13 @@
         isset($_POST['Ort']) &&
         isset($_POST['Passwort']))
     {
-        if($_POST['Telefon'] == "")
+        if($_POST['Telefon'] === "")
         {
-            $telefon = $_POST['Telefon'];
+            $telefon = "NULL";
         }
         else
         {
-            $telefon = "NULL";
+            $telefon = $_POST['Telefon'];
         }
 
         $sql = "INSERT INTO kunde   (Vorname, Name, E_Mail, Passwort, PLZ, Ort, Strasse_Hausnr, Telefon)

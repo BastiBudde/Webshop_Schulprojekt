@@ -8,10 +8,7 @@ if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login
         isset($_POST['Sparte']) && isset($_POST['Kategorie']) &&
         isset($_POST['Picture_Path']) && isset($_POST['Bilderquelle']))
         {
-            $dbserver   = "localhost";
-            $dbuser   = "root";
-            $dbpasswort   = "";
-            $dbname   = "webshop";
+            include "../includes/connectToDB.php";
 
             $bezeichnung = htmlentities($_POST['Bezeichnung']);
             $kurzbeschreibung = nl2br(htmlentities($_POST['Kurzbeschreibung']));
@@ -21,14 +18,6 @@ if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login
             $kategorie = $_POST['Kategorie'];
             $picture_path = $_POST['Picture_Path'];
             $bilderquelle = $_POST['Bilderquelle'];
-
-            //Verbindung zum Db-Server aufbauen
-            $dbh = mysqli_connect($dbserver,$dbuser,$dbpasswort)
-            or die ("Fehler bie CONNECT");
-        
-            //Verbindung zur Datenbank aufbauen
-            mysqli_select_db($dbh,$dbname)
-                or die ("Fehler bei SELECT_DB");
 
             //SQL-Abfrage aufstellen
             $sql = "INSERT INTO produkt (Bezeichnung, Kurzbeschreibung, Picture_Path, Beschreibung, Preis, Sparte, Kategorie, Bilderquelle)

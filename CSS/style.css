@@ -507,36 +507,6 @@ body::-webkit-scrollbar-thumb:hover
 
 
 
-.logindata-container
-{
-  padding-top: 75px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.logindata-container table
-{
-  text-align: left;
-  width: 650px;
-}
-
-.logindata-container caption
-{
-  margin-bottom: 40px;
-}
-
-.logindata-container div div
-{
-  width: 300px;
-}
-
-.logindata-container input[type=text],
-.logindata-container input[type=password]
-{
-  margin-bottom: 5px;
-  width: 100%;
-}
 
 .backend-newDBdataInput-container
 {
@@ -693,6 +663,7 @@ body::-webkit-scrollbar-thumb:hover
   height: 30px;
   border-radius: 4px;
   border: 1px solid #d4d4d4;
+  margin: 2px;
 }
 
 .longInput
@@ -711,7 +682,33 @@ body::-webkit-scrollbar-thumb:hover
   height: 30px;
   border-radius: 4px;
   border: 2px solid #52acac;
+  margin: 0px;
 }
+
+
+/* Styling für Login-Formulare*/
+
+.logindata-container
+{
+  padding-top: 75px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.logindata-container div div
+{
+  width: 300px;
+}
+
+.logindata-container input[type=text],
+.logindata-container input[type=password]
+{
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+
 
 /* Pfeile im Number-Input entfernen für: Chrome, Safari, Edge, Opera */
 .numInptWithoutArrows::-webkit-outer-spin-button,
@@ -738,7 +735,7 @@ body::-webkit-scrollbar-thumb:hover
 {
   position: absolute;
   top: 50px;
-  right: 125px;
+  right: 75px;
   padding: 25px;
   border: 2px solid #52acac;
   border-radius: 10px;
@@ -762,7 +759,7 @@ body::-webkit-scrollbar-thumb:hover
 {
   position: absolute;
   top: 50px;
-  left: 400px;
+  left: 550px;
   padding: 25px;
   border: 2px solid #52acac;
   border-radius: 10px;
@@ -775,11 +772,21 @@ body::-webkit-scrollbar-thumb:hover
   border-collapse: 0px;
 }
 
+.bestell-uebersicht_produktSummaryTable #bezeichnung-Cell
+{
+  width: 230px;
+  text-align: left;
+  padding: 10px 20px;
+}
+
 .bestell-uebersicht_produktSummaryTable #totalCost-Cell
 {
   text-align: right;
   text-decoration: 1px underline double;
 }
+
+
+
 
 .allOrdersContainer h1
 {
