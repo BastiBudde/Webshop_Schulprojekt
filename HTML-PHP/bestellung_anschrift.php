@@ -1,7 +1,14 @@
 <?php
+    /*  Auf dieser Seite muss der Nutzer, wenn er nicht schon mit einem Account eingeloggt ist,
+        auswählen ob er als Gast fortfahren, sich einloggen oder einen Account erstellen will.
+        Wählt der Benutzer die Option als Gast fortzufahren wird der GET-Paramter "checkoutAsGuest"
+        gesetzt und die Seite wird neu geladen. Jetzt erscheint ein Formular in welchem der Gast
+        seine Kontaktdaten eingeben kann. */
+
     session_start();
 
-    //Falls der Benutzer bereits eingeloggt ist wird er direkt zur Bestellübersicht weitergeleitet 
+    /*  Falls der Benutzer bereits eingeloggt ist wird er direkt zur Bestellübersicht weitergeleitet da
+        dien Anschrift des Benutzers bereits beim Einloggen in Session-Variablen gespeichert wurde */
     if(isset($_SESSION['user_login_korrekt']))
     {
         header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/bestellung_uebersicht.php");
@@ -18,7 +25,7 @@
 
         if(isset($_GET['checkoutAsGuest']))
         {
-           echo"<form action='bestellung_uebersicht.php' method='post'>
+           echo"<form id='form' action='bestellung_uebersicht.php' method='post'>
                     <table class='costomerInformationTable'>
                     
                         <caption> <h3>Bitte geben Sie ihre Kontaktdaten an!</h3> <br><br></caption>
@@ -67,10 +74,17 @@
                         </tr>
                         
                         <tr>
+                            <td><label>Mit * markierte Felder sind Pflichtfelder</label></td>
+                        </tr>
+
+                        <tr>
                             <td colspan='2'>
-                                <label>Mit * markierte Felder sind Pflichtfelder</label>
-                                <input type='hidden' name='checkoutAsGuest' value=''></input>
-                                <input type='submit' class='button buttonNormal' value='Weiter'></input>
+                                <div class='flex-DirRow flex-SpaceBetween'>
+                                    <a href='shoppingcart.php' class='button buttonNormal'>Zurück zum Einkaufswagen</a>
+
+                                    <input type='hidden' name='checkoutAsGuest' value=''></input>
+                                    <input type='submit' class='button buttonNormal' value='Weiter'></input>
+                                </div>
                             </td>
                         </tr> 
                         

@@ -652,7 +652,9 @@ body::-webkit-scrollbar-thumb:hover
   position: relative;
 }
 
-.costomerInformationTable input
+.costomerInformationTable input[type=text],
+.costomerInformationTable input[type=email],
+.costomerInformationTable input[type=number]
 {
   position: absolute;
   bottom: 0;
@@ -943,6 +945,11 @@ body::-webkit-scrollbar-thumb:hover
 {
   justify-content: center;
   align-items: center;
+}
+
+.flex-alTop
+{
+  align-items: flex-start;
 }
 
 .lightGreyBg

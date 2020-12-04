@@ -113,13 +113,14 @@
                     <table>
                         <caption>Adress-Informationen</caption>
                         <form action='bestellung_sendOrderToDB.php' method='post'>
+                            <input type='hidden' name='ges_wert' value='".$totalCost."'></input>
 
                             <tr>
                                 <td><input type='text' name='Vorname' required='true' value='$vorname' placeholder='Vorname'></input></td>
                                 <td><input type='text' name='Nachname' required='true' value='$nachname' placeholder='Nachname'></input></td>
                             </tr>
                             
-                            <tr><td colspan='2'><input type='email' name='E_Mail' disabled required='true' value='$e_Mail' placeholder='E-Mail'></input></td></tr>
+                            <tr><td colspan='2'><input type='email' name='E_Mail'  required='true' value='$e_Mail' placeholder='E-Mail' readonly></input></td></tr>
 
                             <tr><td colspan='2'><input type='text' name='Strasse_Hausnr' required='true' value='$strasse_Hausnr' placeholder='Straße und Hausnr.'></input></td></tr>
 
