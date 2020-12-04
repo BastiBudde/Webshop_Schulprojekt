@@ -14,7 +14,7 @@
 
         //SQL-Abfrage an die Datenbank senden
         $result = mysqli_query($dbh,$sql)
-            or die ("Fehler bei der QUERY");
+            or die ("Fehler bei der QUERY: " . mysqli_error($dbh));
 
         //Ergebnis der SQL-Abfrage verarbeiten
         if(mysqli_num_rows($result) != 0) //Testen ob MySQL Query Daten geliefert hat oder nicht

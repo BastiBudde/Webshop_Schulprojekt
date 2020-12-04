@@ -18,8 +18,8 @@
                         <form action='backend-login.php' method='POST'>
                             <div class='flex-DirCol flex-Center'>
                                 <div>
-                                    <input class='inputForm longInput' id='username' type='text' name='username' placeholder='Benutzer' size='30' required='true'>
-                                    <input class='inputForm longInput' id='password' type='password' name='password' placeholder='Passwort' size='30' required='true'>
+                                    <input class='inputForm longInput' id='username' type='text' name='username' placeholder='Benutzer' required='true'>
+                                    <input class='inputForm longInput' id='password' type='password' name='password' placeholder='Passwort' required='true'>
                                 </div>
 
                                 <div class='flex-DirRow flex-SpaceBetween'>

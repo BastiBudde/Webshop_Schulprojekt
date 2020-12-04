@@ -44,13 +44,15 @@
     {
         if(isset($_POST['Suchart']))
         {
-
+            // Wenn zuvor für Suchart Produkt ID gewählt wurde
             if($_POST['Suchart'] == 'ID')
             {
                 $sql = "SELECT Picture_Path, Bezeichnung, Kurzbeschreibung, Preis, ID_Produkt  
                         FROM produkt 
                         WHERE ID_Produkt = ".$_POST['Suchbegriff'].";";
             }
+            // Wenn zuvor nicht für Suchart Produkt ID gewählt wurde 
+            // dann wird nach Bezeichnung gesucht
             else
             {
                 $sql = "SELECT Picture_Path, Bezeichnung, Kurzbeschreibung, Preis, ID_Produkt  

@@ -6,7 +6,7 @@ session_start();
         include "../includes/connectToDB.php";
 
         //SQL-Abfrage aufstellen
-        $sql = "SELECT Benutzername, Passwort, Vorname, Name FROM mitarbeiter WHERE Benutzername = '$username'";
+        $sql = "SELECT Benutzername, Passwort, Vorname, Name FROM mitarbeiter WHERE Benutzername = '".$_POST['username']."'";
 
         //SQL-Abfrage an die Datenbank senden
         $result = mysqli_query($dbh,$sql)
@@ -17,7 +17,7 @@ session_start();
         {
             $fetched_result = mysqli_fetch_row($result);
 
-            if($fetched_result[1] == $password)
+            if($fetched_result[1] == $_POST['password'])
             { 
                 $_SESSION['mitarbeiter_login_korrekt'] = true;
                 $_SESSION['mitarbeiter_Username'] = $username;

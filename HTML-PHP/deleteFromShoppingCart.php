@@ -10,6 +10,7 @@ if(isset($_POST['ProductToDelete']))
     if($productToDelete == 0)
     {
         $_SESSION['ShoppingCart'] = array( array( 'ID_Produkt' => NULL, 'Menge' => NULL) );
+        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/shoppingcart.php?notice=Ihr Einkaufswagen wurde geleert");
     }
     else
     {
@@ -23,9 +24,8 @@ if(isset($_POST['ProductToDelete']))
 
         /* Der neue Einkaufswagen wird an die Session Variable übergeben */
         $_SESSION['ShoppingCart'] = $shoppingCart;
+        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/shoppingcart.php?notice=\"".$_POST['ProductToDelete_name']."\" wurde erfolgreich entfernt");
     }
-    
-    header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/shoppingcart.php?UpdatedShoppingCart=True");
 }
 else
 {

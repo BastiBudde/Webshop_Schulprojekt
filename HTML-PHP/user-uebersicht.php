@@ -10,7 +10,7 @@
     include "../includes/siteHeader.php";
     include "../includes/siteFooter.php";
 
-    pageHead("Backend Übersicht");
+    pageHead("Benutzerübersicht");
 
     echo"<div class='flex-DirCol'>
             

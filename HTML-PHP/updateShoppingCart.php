@@ -17,7 +17,7 @@ if(isset($_POST['ProductToUpdate']) && isset($_POST['NewAmount']))
 
     $_SESSION['ShoppingCart'] = $shoppingCart;
 
-    header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/shoppingcart.php?UpdatedShoppingCart=True");
+    header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/shoppingcart.php?notice=Ihre Änderungen wurden gespeichert");
 }
 else
 {

@@ -85,11 +85,11 @@
                         </tr>
                         <tr>
                             <td> <label for='Kurzbeschreibung'>Kurzbeschreibung</label> </td>
-                            <td> <textarea rows='5' cols='60' id='Kurzbeschreibung' name='Kurzbeschreibung' required='true'>".$fetched_result[1]."</textarea></td>
+                            <td> <textarea rows='5' cols='60' id='Kurzbeschreibung' name='Kurzbeschreibung' required='true'>".str_replace("<br />", "", $fetched_result[1])."</textarea></td>
                         </tr>
                         <tr>
                             <td> <label for='Beschreibung'>Beschreibung</label> </td>
-                            <td> <textarea rows='15' cols='60' id='Beschreibung' name='Beschreibung' required='true'>".$fetched_result[2]."</textarea></td>
+                            <td> <textarea rows='15' cols='60' id='Beschreibung' name='Beschreibung' required='true'>".str_replace("<br />", "", $fetched_result[2])."</textarea></td>
                         </tr>
                         <tr>
                             <td> <label for='Preis'>Preis</label> </td>

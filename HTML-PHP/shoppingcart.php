@@ -91,7 +91,7 @@
             echo "  <td id='table_zellen_preis'> 
                         <form action='updateShoppingCart.php' method='POST'>
                             <input type='hidden' name='ProductToUpdate' value='$item[3]'>
-                            <select name='NewAmount'>   
+                            <select name='NewAmount' onchange='javascript: submit();'>   
                                 <option value='1'";if($shoppingCart[$indexOfItem]['Menge'] == 1){echo"selected";}echo">1</option>
                                 <option value='2'";if($shoppingCart[$indexOfItem]['Menge'] == 2){echo"selected";}echo">2</option>
                                 <option value='3'";if($shoppingCart[$indexOfItem]['Menge'] == 3){echo"selected";}echo">3</option>
@@ -103,10 +103,10 @@
                                 <option value='9'";if($shoppingCart[$indexOfItem]['Menge'] == 9){echo"selected";}echo">9</option>
                                 <option value='10'";if($shoppingCart[$indexOfItem]['Menge'] == 10){echo"selected";}echo">10</option>
                             </select>
-                            <input type='submit' class='button buttonSmall' value='Speichern'>
                         </form>
                         <form action='deleteFromShoppingCart.php' method='POST'>
-                            <input type='hidden' name='ProductToDelete' value='$item[3]'>
+                            <input type='hidden' name='ProductToDelete' value='$item[3]'>    
+                            <input type='hidden' name='ProductToDelete_name' value='$item[1]'>
                             <input type='submit' value='Entfernen' class='buttonAsLink'>
                         </form>
                     </td>";
