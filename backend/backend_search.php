@@ -133,7 +133,7 @@
                                         <input type='radio' name='Suchart' value='ID' id='id' required='true'></input>
                                         <label for='ID'>Produkt ID</label>
                                         
-                                        <input type='radio' name='Suchart' value='Bezeichnung' id='bezeichznung'></input>
+                                        <input type='radio' name='Suchart' selected value='Bezeichnung' id='bezeichznung'></input>
                                         <label for='bezeichnung'>Bezeichnung</label>
                                     </td>
                                 </tr>

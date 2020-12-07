@@ -892,7 +892,11 @@ body::-webkit-scrollbar-thumb:hover
   align-items: flex-end;
 }
 
-
+.orderCompleteMsg
+{
+  width: 700px;
+  margin: 0 auto;
+}
 
 
 

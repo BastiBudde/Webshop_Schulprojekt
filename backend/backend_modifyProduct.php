@@ -93,7 +93,7 @@
                         </tr>
                         <tr>
                             <td> <label for='Preis'>Preis</label> </td>
-                            <td> <input type='number' value='".floatval($fetched_result[3])."' id='Preis' name='Preis' required='true' min='0' max='999.99' step='0.01'> </td>
+                            <td> <input type='number' value='".floatval($fetched_result[3])."' id='Preis' name='Preis' required='true' min='0' max='9999.99' step='0.01'> </td>
                         </tr>
                         <tr>
                             <td> <label for='Sparte'>Sparte</label> </td>

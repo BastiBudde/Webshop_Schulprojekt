@@ -82,7 +82,8 @@
     //Einkaufswagen wird nach bestellung geleert
     $_SESSION['ShoppingCart'] = array();
 
-    header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/shoppingcart.php?notice=Bestellung erfolgreich aufgegeben. Sie werden von uns per E-Mail über den Status ihrer Bestellung am laufenden gehalten");
+    $_SESSION['ID_Bestellung']; // Damit auf der Folgenden Seite eine Rechnung erstellt werden kann
+    header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/bestellung_complete.php");
 
     mysqli_close($dbh);
 ?>
