@@ -52,7 +52,8 @@
         
         $query_row = mysqli_fetch_row($query);
         $id_Bestellung = $query_row[0];
-
+        $_SESSION['ID_Bestellung'] = $id_Bestellung; // Damit auf der Folgenden Seite eine Rechnung erstellt werden kann
+        
         //IDs der Bestellung und der Produkte jeweils  einzelm mit dazugehöriger Menge in bestellung_produkt hinterlegen
         foreach($shoppingCart as $item)
         {
@@ -82,7 +83,6 @@
     //Einkaufswagen wird nach bestellung geleert
     $_SESSION['ShoppingCart'] = array();
 
-    $_SESSION['ID_Bestellung']; // Damit auf der Folgenden Seite eine Rechnung erstellt werden kann
     header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/bestellung_complete.php");
 
     mysqli_close($dbh);
