@@ -15,7 +15,7 @@
             <p><a href='bestellung_showReceipt.php' target='_blank'>Rechnung anzeigen</a></p>
             <p>
                 <br>
-                <a herf='../index.php' class='button buttonNormal'>Zurück zum Shop</a>
+                <a href='../index.php' class='button buttonNormal'>Zurück zum Shop</a>
             </p>
         </div>";
 

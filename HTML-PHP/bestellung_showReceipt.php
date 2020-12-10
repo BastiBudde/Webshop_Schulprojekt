@@ -39,7 +39,8 @@
             FROM bestellung, produkt, bestellung_produkt 
             WHERE   bestellung.ID_Bestellung = bestellung_produkt.ID_Bestellung 
                 AND produkt.ID_Produkt = bestellung_produkt.ID_Produkt 
-                AND bestellung.ID_Bestellung = " . $_SESSION['ID_Bestellung'] . ";";
+                AND bestellung.ID_Bestellung = " . $_SESSION['ID_Bestellung'] . "
+            ORDER BY produkt.ID_Produkt;";
 
     $produkte_unfetched = mysqli_query($dbh, $sql)
                             or die("Fehler bei der Query: ".mysqli_error($dbh));
@@ -55,12 +56,14 @@
             <head>
                 <meta charset='UTF-8'>
                 <title>Bestellung Nr.: ".$rechnungs_nummer."</title>
+                <link rel='icon' href='../Bilder/icons/favicon.ico'>
                 <style>
                     body 
                     {
-                        width: 19cm;
-                        margin: 0 auto;
-                        padding: 2cm;
+                        width: 19cm; /* Din-A4 breite: 21cm - 2cm padding */
+                        margin: 20px auto 0px auto; /* Zentrieren und margin-top*/
+                        padding: 2cm; /* Seitenränder */
+                        border: 2px solid #000000;
                     }
                 </style>
             </head>
@@ -130,6 +133,12 @@
                         <td style='border-top: 1px solid #000000;'></td>
                         <td style='border-top: 1px solid #000000;'></td>
                         <td style='text-align: center; border-top: 1px solid #000000;'><b>".number_format($gesamtpreis, 2, ",", "")." Euro</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan='3'><b>(brets inkl.) 19% MwSt.:</b></td>
+                        <td></td>
+                        <td></td>
+                        <td style='text-align: center;'><b>".number_format($gesamtpreis*0.19, 2, ",", "")." Euro</b></td>
                     </tr> 
                     <tr>
                         <td colspan='4'><br>Alle Preise werden inklusive 19% MwSt. angegeben.</td>

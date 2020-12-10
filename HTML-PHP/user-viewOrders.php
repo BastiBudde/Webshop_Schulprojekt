@@ -114,7 +114,7 @@
                                 <div class='flex-DirCol textAlLeft'>
                                     <small>VERSANDADRESSE</small>
                                     <a><dfn class='tooltip'>
-                                        " . $item['GanzerName'] . "
+                                        " . $item['GanzerName'] . "&#x21E9;
                                         <span role='tooltip'>" . $item['Anschrift'] . "</span>
                                     </dfn></a>
                                 </div>

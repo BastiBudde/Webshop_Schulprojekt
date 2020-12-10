@@ -1,130 +1,211 @@
 <?php
-// Folgender Code stammt von der Webseite: https://www.php-einfach.de/experte/php-codebeispiele/pdf-per-php-erstellen-pdf-rechnung/
-// Autor: Nils Reimers
+class Diagramm {
+    var $name; // String or numeric
+    var $height; // Int
+    var $width; // Int
+    var $maxvalue_height; // Int
+    var $x = array(); // Elements can be numeric or a string
+    var $y = array(); // Elements are numeric
 
-$rechnungs_nummer = "743";
-$rechnungs_datum = date("d.m.Y");
-$lieferdatum = date("d.m.Y");
-$pdfAuthor = "PHP-Einfach.de";
- 
-$rechnungs_header = '
-<img src="Bilder/GamingHeavenLogo.svg">
-PHP-Einfach.de
-Nils Reimers
-www.php-einfach.de';
- 
-$rechnungs_empfaenger = 'Max Musterman
-Musterstraße 17
-12345 Musterstadt';
- 
-$rechnungs_footer = "Wir bitten um eine Begleichung der Rechnung innerhalb von 14 Tagen nach Erhalt. Bitte Überweisen Sie den vollständigen Betrag an:
- 
-<b>Empfänger:</b> Meine Firma
-<b>IBAN</b>: DE85 745165 45214 12364
-<b>BIC</b>: C46X453AD";
- 
-//Auflistung eurer verschiedenen Posten im Format [Produktbezeichnung, Menge, Einzelpreis]
-$rechnungs_posten = array(
- array("Produkt 1", 1, 42.50),
- array("Produkt 2", 5, 5.20),
- array("Produkt 3", 3, 10.00));
- 
-//Höhe eurer Umsatzsteuer. 0.19 für 19% Umsatzsteuer
-$umsatzsteuer = 0.0; 
- 
-$pdfName = "Rechnung_".$rechnungs_nummer.".pdf";
- 
- 
-//////////////////////////// Inhalt des PDFs als HTML-Code \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- 
- 
-// Erstellung des HTML-Codes. Dieser HTML-Code definiert das Aussehen eures PDFs.
-// tcpdf unterstützt recht viele HTML-Befehle. Die Nutzung von CSS ist allerdings
-// stark eingeschränkt.
- 
-$html = '
-<table cellpadding="5" cellspacing="0" style="width: 100%; ">
- <tr>
- <td>'.nl2br(trim($rechnungs_header)).'</td>
-    <td style="text-align: right">
-Rechnungsnummer '.$rechnungs_nummer.'<br>
-Rechnungsdatum: '.$rechnungs_datum.'<br>
-Lieferdatum: '.$lieferdatum.'<br>
- </td>
- </tr>
- 
- <tr>
- <td style="font-size:1.3em; font-weight: bold;">
-<br><br>
-Rechnung
-<br>
- </td>
- </tr>
- 
- 
- <tr>
- <td colspan="2">'.nl2br(trim($rechnungs_empfaenger)).'</td>
- </tr>
-</table>
-<br><br><br>
- 
-<table cellpadding="5" cellspacing="0" style="width: 100%;" border="0">
- <tr style="background-color: #cccccc; padding:5px;">
- <td style="padding:5px;"><b>Bezeichnung</b></td>
- <td style="text-align: center;"><b>Menge</b></td>
- <td style="text-align: center;"><b>Einzelpreis</b></td>
- <td style="text-align: center;"><b>Preis</b></td>
- </tr>';
- 
- 
-$gesamtpreis = 0;
- 
-foreach($rechnungs_posten as $posten) {
- $menge = $posten[1];
- $einzelpreis = $posten[2];
- $preis = $menge*$einzelpreis;
- $gesamtpreis += $preis;
- $html .= '<tr>
-                <td>'.$posten[0].'</td>
- <td style="text-align: center;">'.$posten[1].'</td> 
- <td style="text-align: center;">'.number_format($posten[2], 2, ',', '').' Euro</td>	
-                <td style="text-align: center;">'.number_format($preis, 2, ',', '').' Euro</td>
-              </tr>';
-}
-$html .="</table>";
- 
- 
- 
-$html .= '
-<hr>
-<table cellpadding="5" cellspacing="0" style="width: 100%;" border="0">';
-if($umsatzsteuer > 0) {
- $netto = $gesamtpreis / (1+$umsatzsteuer);
- $umsatzsteuer_betrag = $gesamtpreis - $netto;
- 
- $html .= '
- <tr>
- <td colspan="3">Zwischensumme (Netto)</td>
- <td style="text-align: center;">'.number_format($netto , 2, ',', '').' Euro</td>
- </tr>
- <tr>
- <td colspan="3">Umsatzsteuer ('.intval($umsatzsteuer*100).'%)</td>
- <td style="text-align: center;">'.number_format($umsatzsteuer_betrag, 2, ',', '').' Euro</td>
- </tr>';
-}
- 
-$html .='
-            <tr>
-                <td colspan="3"><b>Gesamtsumme: </b></td>
-                <td style="text-align: center;"><b>'.number_format($gesamtpreis, 2, ',', '').' Euro</b></td>
-            </tr> 
-        </table>
-<br><br><br>';
- 
-if($umsatzsteuer == 0) {
- $html .= 'Nach § 19 Abs. 1 UStG wird keine Umsatzsteuer berechnet.<br><br>';
-}
- 
-$html .= nl2br($rechnungs_footer);
+    // Diagrammname setzen
+    function setName($name){
+        if(!is_string($name) AND !is_numeric($name)){
+            throw new Exception("Falscher Dateityp (".gettype($name).") number or string expected!");
+            return false;
+        }
+        $this->name = $name;
+    }
 
-echo $html;
+    // Diagrammname auslesen
+    function getName(){
+        return $this->name;
+    }
+
+    // Höhe des Diagramms setzen
+    function setHeight($height){
+        if(!is_int($height)){
+            throw new Exception("Falscher Dateityp (".gettype($height).") integer expected!");
+            return false;
+        }
+        $this->height = $height;
+        return true;
+    }
+
+    // Höhe des Diagramms auslesen
+    function getHeight(){
+        return $this->height;
+    }
+
+    // Breite des Diagramms setzen
+    function setWidth($width){
+        if(!is_int($width)){
+            throw new Exception("Falscher Dateityp (".gettype($width).") integer expected!");
+            return false;
+        }
+        $this->width = $width;
+        return true;
+    }
+
+    // Breite des Diagramms auslesen
+    function getWidth(){
+        return $this->width;
+    }
+
+    // Balkenhöhe des Maximalwertes setzen
+    function setMaxvalueHeight($maxvalue_height){
+        if(!is_int($maxvalue_height)){
+            throw new Exception("Falscher Dateityp (".gettype($maxvalue_height).") integer expected!");
+            return false;
+        }
+        $this->maxvalue_height = $maxvalue_height;
+        return true;
+    }
+
+    // Balkenhöhe des Maximalwertes auslesen
+    function getMaxvalueHeight(){
+        return $this->maxvalue_height;
+    }
+
+    // Fügt einen X-Wert hinzu
+    function addX($x){
+        if(!is_numeric($x) AND !is_string($x)){
+            throw new Exception("Falscher Dateityp (".gettype($x).") number or string expected!");
+            return false;
+        }
+        $this->x[] = $x;
+        return true;
+    }
+
+    // Fügt einen Y-Wert hinzu
+    function addY($y){
+        if(!is_numeric($y)){
+            throw new Exception("Falscher Dateityp (".gettype($y).") number expected!");
+            return false;
+        }
+        $this->y[] = $y;
+        return true;
+    }
+
+    function _checkValues(){
+        if(!isset($this->name)){
+            throw new Exception("Kein Diagrammname vorhanden!");
+            return false;
+        }
+        if(!isset($this->height)){
+            throw new Exception("Keine Höhe für das Diagramm vorhanden!");
+            return false;
+        }
+        if(!isset($this->width)){
+            throw new Exception("Keine Breite für das Diagramm vorhanden!");
+            return false;
+        }
+        if(!isset($this->maxvalue_height)){
+            throw new Exception("Keine Höhe für den Maximalwert vorhanden!");
+            return false;
+        }
+        if(!isset($this->x)){
+            throw new Exception("Keine X-Werte vorhanden!");
+            return false;
+        }
+        if(!isset($this->y)){
+            throw new Exception("Keine Y-Werte vorhanden!");
+            return false;
+        }
+        if(count($this->x)!=count($this->y)){
+            throw new Exception("Anzahl der X- und Y-Werte stimmt nicht überein!");
+            return false;
+        }
+        return true;
+    }
+
+    function _getRelation(){
+        $relation = array();
+        foreach($this->y as $key => $wert)
+            $relation[$key] = $wert/$this->_getMaxValue();
+        return $relation;
+    }
+
+    function _getMaxValue(){
+        return max($this->y);
+    }
+
+    function _getDataNumber(){
+        return count($this->y);
+    }
+
+    function display($echo = false){
+        if(!$this->_checkValues())
+            return '';
+        $output = '';
+
+        // Verhältnis aller Daten zum Maximalwert berechnen
+        // Jeder Wert erhält dann als Höhe einen Bruchteil der
+        // maximalen Balkenhöhe
+        $relation = $this->_getRelation();
+
+        // Tabelle erzeugen
+        $output .= "<table cellpadding=\"1\" style=\"width:".$this->getWidth()."px; height:".$this->getHeight()."px; text-align:center; background-color:#aaa; border:solid 1px black; font-size:10px; margin:10px auto\">\n";
+        // Diagrammname ausgeben
+        $output .= " <tr>\n".
+                   "  <td colspan=\"".$this->_getDataNumber()."\" style=\"height:20px;\">\n".
+                   $this->getName()."\n".
+                   "  </td>\n".
+                   " </tr>\n";
+
+        $output .= " <tr>\n";
+        // Werte - also Balken - ausgeben
+        foreach($relation as $key => $wert){
+             // Breite einer Zelle und Höhe eines Balkens berechnen
+             $output .= "  <td style=\"vertical-align:bottom; height:200px; width:".floor($this->getWidth()/$this->_getDataNumber())."px;\">".
+                        "   <div style=\"margin:auto; background-color:red; height:".floor($this->getMaxvalueHeight()*$wert)."px; width:".floor(($this->getWidth()/2)/$this->_getDataNumber())."px\" title=\"".$this->y[$key]."\">".
+                        "&nbsp;".
+                        "   </div>".
+                        "  </td>\n";
+        }
+        $output .= " </tr>\n";
+
+        $output .= " <tr>\n";
+        // Stellen - also Balkenzuordnung - ausgeben
+        foreach($this->x as $stelle){
+             $output .= "  <td style=\"vertical-align:middle; border:solid 1px black; border-width:1px 1px 0px 1px; height:80px;\">";
+             $output .= $stelle;
+             $output .= "  </td>\n";
+        }
+
+        $output .= " </tr>\n";
+        $output .= "</table>\n";
+        if($echo)
+            echo $output;
+        else
+            return $output;
+    }
+}
+
+  // Neues Objekt erzeugen
+  $a = new Diagramm();
+  // 'Versuche', die Konfiguration zu durchzuführen
+  try{
+      // Name setzen
+      $a->setName("Besucherzahlen");
+      // Höhe setzen
+      $a->setHeight(300);
+      // Breite setzen
+      $a->setWidth(580);
+      // Balkenhöhe setzen
+      $a->setMaxvalueHeight(190);
+      // X- und Y-Werte definieren
+      $x = array('Januar', 'Februar', 'März', 'April', 'Mai', 'Juni');
+      $y = array(    5500,     6800,    5200,    4800,  7000,   5900);
+      // Werte im Diagrammobjekt speichern
+      foreach($x as $key => $value){
+          $a->addX($value);
+          $a->addY($y[$key]);
+      }
+      // Diagramm ausgeben
+      $a->display(true);
+  }
+  // Geworfene Exceptions auswerten
+  catch(Exception $e){ 
+      echo '<strong>Fehler: </strong>'.$e->getMessage();
+  }
+?>
