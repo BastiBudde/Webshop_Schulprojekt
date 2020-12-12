@@ -517,7 +517,7 @@ body::-webkit-scrollbar-thumb:hover
 .backend-newDBdataInput-container
 {
   width: 50%;
-  margin: 0 auto 25px;  /* top left/right bottom */
+  margin: 0 auto 25px;  /* top - left/right - bottom */
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -586,6 +586,44 @@ body::-webkit-scrollbar-thumb:hover
   font-weight: 700;
 }
 
+
+.backend-webshopStatsTable
+{
+  margin-top: 40px;
+  border-collapse: collapse;
+}
+
+.backend-webshopStatsTable caption
+{
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.backend-webshopStatsTable td
+{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.backend-webshopStatsTable #name
+{
+  text-align: left;
+  vertical-align: middle;
+  font-size: 18px;
+}
+
+.backend-webshopStatsTable #data
+{
+  text-align: right;
+  vertical-align: middle;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.backend-webshopStatsTable #spacing
+{
+  width: 30px;
+}
 
 
 
@@ -1012,4 +1050,14 @@ body::-webkit-scrollbar-thumb:hover
 .fontBold
 {
   font-weight: 700;
+}
+
+.borderTop
+{
+  border-top: 2px solid #000000;
+}
+
+.borderLeft
+{
+  border-left: 2px solid #000000;
 }
