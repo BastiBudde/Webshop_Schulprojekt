@@ -84,7 +84,7 @@
             // Jeweils ein "orderHead" mit Datum, Bestellnummer etc. und ein weiterer Container "orderItemsContainer"
             // befinden. Im "orderItemsContainer" befinden sich die einzelnen Produkte "orderItem" mit Produktnummer, 
             // Preis, Menge, etc. 
-            echo "<div class='allOrdersContainer flex-DirCol bigMarginBottom'>";
+            echo "<div class='allOrdersContainer flex-DirCol'>";
             echo "<h1 class='textAlLeft middleMarginBottom'>&nbsp;Ihre Bestellungen</h1>";
             
             $aktueller_index = 0;

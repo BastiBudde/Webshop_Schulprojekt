@@ -132,6 +132,10 @@
                 <tr>
                     <td colspan='2'>
                         <label>Mit * markierte Felder sind Pflichtfelder</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td id='submitButton'>
                         <input type='hidden' name='submitted'></input> 
                         <input type='submit' class='button buttonNormal' value='Speichern' onclick='return confirm(\"Wollen Sie die neuen wirklich Informationen Speichern?\");'></input>
                     </td>

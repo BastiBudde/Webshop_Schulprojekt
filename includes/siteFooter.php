@@ -3,17 +3,13 @@
     function pageFooter()
     {
         echo"   
-                        </article>
-                    </td> 
-                </tr>
-                <tr>
-                    <td>
-                        <footer class='footer'>
-                            <p>Hello World!</p>
-                        </footer>
-                    </td> 
-                </tr>
-            </table>
+                </article>
+
+                <footer>
+                    <p>Hello World!</p>
+                </footer>
+
+            </main>
 
         </body>
 

@@ -4,11 +4,6 @@
   margin: 0;
 }
 
-divhtml, body
-{
-  height: 100%;
-}
-
 img, input[type=image]
 {
   vertical-align:bottom;
@@ -26,6 +21,9 @@ body
 {
   font-family: Helvetica;
   width: 1920px;
+
+  display: flex;
+  justify-content: center;
 }
 
 /* Scrollbar Breite */
@@ -117,11 +115,6 @@ body::-webkit-scrollbar-thumb:hover
 {
   outline: none;
   text-decoration: underline;
-}
-
-.linkAsButton
-{
-
 }
 
 .notice-box
@@ -350,34 +343,44 @@ body::-webkit-scrollbar-thumb:hover
   display: block;
 }
 
-/* Diese Tabelle enthält den Article und den Footer */
-.artilcle-footer-table 
+main
 {
   position: absolute;
   top: 125px;
-  left: 0px;
 }
 
-.article
+article
 {
-  min-height: 700px;
-  padding-top: 30px;
-  height: 100%;
+  min-height: 782px;
+  margin-top: 30px;
   text-align: center;
   width: 1920px;
   background-color: #ffffff;
+
   display: flex;
   align-items: flex-start;
+  justify-content: center;
+}
+
+footer
+{
+  position: absolute;
+  height: 75px;
+  width: 1920px;
+  bottom: 0px;
+  background-color: #4a5053;
+
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
 .products_table
 {
   border-collapse: collapse;
-  margin-bottom: 60px;
+  margin-bottom: 120px;
 }
 
-/* Überschrift der Produkt-Tabelle */
 .products_table caption
 {
   font-size: 40px;
@@ -391,7 +394,7 @@ body::-webkit-scrollbar-thumb:hover
   max-width: 350px;
   height: auto;
   width: auto;
-  margin: 1px 0px;
+  margin: 1px 1px;
 }
 
 .products_table td, .products_table th
@@ -429,22 +432,12 @@ body::-webkit-scrollbar-thumb:hover
   font-size: 24px;
 }
 
-.footer
-{
-  height: 75px;
-  width: 1920px;
-  background-color: #4a5053;
-  margin-left: -3px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .product-view-table
 {
   width: 1200px;
-  padding-bottom: 40px;
+  margin-bottom: 120px;
 }
 
 .product-view-table img
@@ -517,7 +510,7 @@ body::-webkit-scrollbar-thumb:hover
 .backend-newDBdataInput-container
 {
   width: 50%;
-  margin: 0 auto 25px;  /* top - left/right - bottom */
+  margin: 0 auto 120px;  /* top - left/right - bottom */
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -633,7 +626,7 @@ body::-webkit-scrollbar-thumb:hover
 .shoppingCart-Table
 {
   border-collapse: collapse;
-  margin-bottom: 60px;
+  margin-bottom: 120px;
   min-width: 700px;
 }
 
@@ -648,13 +641,6 @@ body::-webkit-scrollbar-thumb:hover
   font-weight: bold;
   margin: 20px 0 40px 0;
 }
-
-/* .shoppingCart-Table caption sub
-{
-  font-size: 20px;
-  font-weight: bold;
-  padding-bottom: 30px;
-} */
 
 .shoppingCart-Table_Notice
 {
@@ -702,6 +688,11 @@ body::-webkit-scrollbar-thumb:hover
 {
   position: absolute;
   bottom: 0;
+}
+
+.costomerInformationTable #submitButton
+{
+  vertical-align: top;
 }
 
 .inputForm
@@ -807,6 +798,7 @@ body::-webkit-scrollbar-thumb:hover
   top: 50px;
   left: 550px;
   padding: 25px;
+  margin-bottom: 120px;
   border: 2px solid #52acac;
   border-radius: 10px;
 }
@@ -832,7 +824,10 @@ body::-webkit-scrollbar-thumb:hover
 }
 
 
-
+.allOrdersContainer
+{
+  margin-bottom: 120px;
+}
 
 .allOrdersContainer h1
 {
@@ -1030,6 +1025,11 @@ body::-webkit-scrollbar-thumb:hover
 .bigMarginBottom
 {
   margin-bottom: 40px;
+}
+
+.hugeMarginBottom
+{
+  margin-bottom: 120px;
 }
 
 .textAlLeft

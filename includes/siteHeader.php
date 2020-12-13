@@ -182,10 +182,9 @@
 
             </nav>
 
-            <table class='artilcle-footer-table'>
-                <tr>
-                <td>
-                    <article class='article'>";
+            <main class='flex-DirCol flex-Center'>
+        
+                <article>";
 
             echo $page;
 

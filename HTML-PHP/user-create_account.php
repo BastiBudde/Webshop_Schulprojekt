@@ -65,6 +65,10 @@
                     <tr>
                         <td colspan='2'>
                             <label>Mit * markierte Felder sind Pflichtfelder</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id='submitButton'>
                             <input type='hidden' name='checkoutAsGuest' value=''></input>
                             <input type='submit' class='button buttonNormal' value='Weiter'></input>
                         </td>

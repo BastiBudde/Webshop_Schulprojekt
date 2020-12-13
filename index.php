@@ -184,24 +184,22 @@ session_start();
 
     </nav>
 
-    <table class="artilcle-footer-table">
-        <tr>
-           <td>
-                <article class="article">
+    <main class='flex-DirCol flex-Center'>
+        
+        <article>
 
                 <img src="Bilder/GamingHeavenLogo.svg" alt="Gaming Heaven Logo" title="Logo" width="500">
 
-                </article>
-           </td> 
-        </tr>
-        <tr>
-           <td>
-                <footer class="footer">
-                    <p>Hello World!</p>
-                </footer>
-           </td> 
-        </tr>
-    </table>
+        </article>
+
+        <footer>
+
+            <p>Hello World!</p>
+            
+        </footer>
+
+    </main>
+
 
 </body>
 
