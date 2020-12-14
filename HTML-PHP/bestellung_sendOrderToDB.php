@@ -6,7 +6,7 @@
     // Aktuells Einkaufswagen-Array holen
     $shoppingCart = $_SESSION['ShoppingCart'];
 
-    // Kontaktinformationen welche von bestellung.uebersicht.php übermittelt wurden holen
+    // Kontaktinformationen welche von bestellung_uebersicht.php übermittelt wurden holen
     $vorname =          $_POST['Vorname'];
     $nachname =         $_POST['Nachname'];
     $e_Mail =           strtolower($_POST['E_Mail']);
@@ -83,7 +83,7 @@
     //Einkaufswagen wird nach bestellung geleert
     $_SESSION['ShoppingCart'] = array();
 
-    header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/bestellung_complete.php");
+    header("Location: bestellung_complete.php");
 
     mysqli_close($dbh);
 ?>

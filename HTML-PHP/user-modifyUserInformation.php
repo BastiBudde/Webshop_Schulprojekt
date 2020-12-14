@@ -4,13 +4,14 @@
     //Sollte der Benutzer nicht eingeloggt sein so wird er zur Login-Seite weitergeleitet 
     if(!(isset($_SESSION['user_login_korrekt'])))
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php");
+        header("Location: user-login.php");
     }
     
     include "../includes/siteHeader.php";
     include "../includes/siteFooter.php";
     include "../includes/connectToDB.php";
 
+    //SQL-Abfrage um aktuelle Benutzerinformationen zu besorgen
     $sql = "SELECT Vorname, Name, Strasse_Hausnr, PLZ, Ort, Telefon, E_Mail, Passwort
             FROM kunde
             WHERE ID_Kunde = ".$_SESSION['user_ID_kunde'].";";
@@ -20,6 +21,7 @@
 
     $user_information = mysqli_fetch_row($result);
 
+    mysqli_close($dbh);
 
     //Auswertung der Nutzereingabe
     if(isset($_POST['submitted']))
@@ -36,7 +38,7 @@
         // wird auf user-sendNewUserInfoToDB.php weitergeleitet
         if($_POST['aktuellesPasswort'] == "" && $_POST['neuesPasswort'] == "")
         {
-            header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-sendNewUserInfoToDB.php");
+            header("Location: user-sendNewUserInfoToDB.php");
         }
 
         // Sollte ein aktuelles Passwort eingetragen sein
@@ -46,14 +48,14 @@
             // "Bitte geben Sie ein neues Passwort ein" angezeigt
             if($_POST['neuesPasswort'] == "")
             {
-                header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-modifyUserInformation.php?notice=Bitte geben Sie ein neues Passwort ein");
+                header("Location: user-modifyUserInformation.php?notice=Bitte geben Sie ein neues Passwort ein");
             }
             // Sollte ein aktuelles Passwort und ein neues Passwort eingetragen sein
             // wird das neue Passwort wie die anderen Informationen in einer Session-Variable gespeichert 
             // und es wird auf user-sendNewUserInfoToDB.php weitergeleitet
             else
             {
-                header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-sendNewUserInfoToDB.php");
+                header("Location: user-sendNewUserInfoToDB.php");
                 $_SESSION['user_information_NeuesPasswort'] = $_POST['neuesPasswort'];
             }
         }
@@ -62,13 +64,14 @@
         // "Bitte geben Sie ihr aktuelles Passwort ein" ausgegeben
         if($_POST['neuesPasswort'] != "" && $_POST['aktuellesPasswort'] == "")
         {
-            header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-modifyUserInformation.php?notice=Bitte geben Sie ihr aktuelles Passwort ein");
+            header("Location: user-modifyUserInformation.php?notice=Bitte geben Sie ihr aktuelles Passwort ein");
         }
     }
 
     pageHead("Meine Informationen");
 
-  
+    //Hier werden die aktuellen Benutzerinformationen angezeigt
+    //Hier kann der Benutzer seine Informationen bearbeiten
     echo"<table class='costomerInformationTable'>
     
             <form action='user-modifyUserInformation.php' method='post'>

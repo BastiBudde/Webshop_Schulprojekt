@@ -40,6 +40,7 @@
         WHERE ID_Kunde = ".$_SESSION['user_ID_kunde'].";";
     }
 
+    //Um Komplikationen beim erneuten Aktualisieren wärend der aktuellen Session zu vermeiden
     if(isset($_SESSION['user_information_NeuesPasswort']))
     {
         unset($_SESSION['user_information_NeuesPasswort']);
@@ -52,10 +53,11 @@
     unset($_SESSION['user_information_Strasse_hausnr']);
     unset($_SESSION['user_information_Telefon']);
 
-    echo $sql."\n";
-
     mysqli_query($dbh, $sql)
         or die("Fehler bei der Query: " . mysqli_error($dbh));
 
-    header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-uebersicht.php?notice=Informationen erfolgreich gespeichert");
+    mysqli_close($dbh);
+
+    //Weiterleiten zur Benutzer-Übersicht
+    header("Location: user-uebersicht.php?notice=Informationen erfolgreich gespeichert");
 ?>

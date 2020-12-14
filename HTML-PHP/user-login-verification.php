@@ -16,6 +16,8 @@
         $result = mysqli_query($dbh,$sql)
             or die ("Fehler bei der QUERY: " . mysqli_error($dbh));
 
+        mysqli_close($dbh);
+
         //Ergebnis der SQL-Abfrage verarbeiten
         if(mysqli_num_rows($result) != 0) //Testen ob MySQL Query Daten geliefert hat oder nicht
         {
@@ -33,20 +35,20 @@
                 $_SESSION['user_Ort'] = $fetched_result[5];
                 $_SESSION['user_Strasse_Hausnr'] = $fetched_result[6];
                 $_SESSION['user_Telefon'] = $fetched_result[7];
-                header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-uebersicht.php");
+                header("Location: user-uebersicht.php");
             }
             else
             {
-                header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php?notice=Benutzer und Passwort stimmen nicht überein"); //Lässt auf user-login.php die Rückmeldung geben, dass E-Mail und Passwort nicht übereinstimmen
+                header("Location: user-login.php?notice=Benutzer und Passwort stimmen nicht überein"); //Lässt auf user-login.php die Rückmeldung geben, dass E-Mail und Passwort nicht übereinstimmen
             }
         }
         else
         {
-            header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php?notice=Benutzer existiert nicht"); //Lässt auf user-login.php die Rückmeldung geben, dass der Benutzer nicht existiert
+            header("Location: user-login.php?notice=Benutzer existiert nicht"); //Lässt auf user-login.php die Rückmeldung geben, dass der Benutzer nicht existiert
         }
     }
     else
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php"); //Leiter auf user-login.php zurück falls E-Mail und/oder Passwort nicht gesetzt sind / eingegeben wurden
+        header("Location: user-login.php"); //Leiter auf user-login.php zurück falls E-Mail und/oder Passwort nicht gesetzt sind / eingegeben wurden
     }
 ?>

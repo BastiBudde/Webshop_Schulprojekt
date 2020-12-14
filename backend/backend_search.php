@@ -10,6 +10,8 @@
 
     if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login_korrekt'] == true)
     {
+        //Hier wird überprüft ob der Beutzer bereits einen Suchart gewählt hat
+        //(was bedeuten würde, dass der Benutzer von dieser Seite kommt)
         if(isset($_POST['Suchart']))
         {
             // Wenn zuvor für Suchart Produkt ID gewählt wurde
@@ -32,6 +34,8 @@
             //SQL-Abfrage an die Datenbank senden
             $result = mysqli_query($dbh,$sql)
             or die ("Fehler bei der QUERY:". $sql);
+
+            mysqli_close($dbh);
 
 
         echo "  <table class='products_table'>
@@ -79,6 +83,8 @@
             }
             echo"</table>";
         }
+        //Besucht der Benutzer zuerst diese Suchen-Seite wird dies heir angezeigt
+        //hier kann dann ein Suchbegriff eingegeben und die Suchart gewählt werden
         else
         {
             echo"   <div class='backend-newDBdataInput-container'>
@@ -115,6 +121,7 @@
                     </div>";
         }
     }
+    //Ist der Benutzer nicht im Backend eingeloggt wird hier ein Text und ein Link zum Login angezeigt
     else
     {
         echo "  <div class='backend-newDBdataInput-container'>

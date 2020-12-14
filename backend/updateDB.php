@@ -21,11 +21,15 @@
         mysqli_query($dbh,$sql)
         or die ("Fehler bei der QUERY:". $sql);
 
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_uebersicht.php?notice=Änderungen erfolgreich gespeichert!"); 
+        mysqli_close($dbh);
+
+        header("Location: backend_uebersicht.php?notice=Änderungen erfolgreich gespeichert!"); 
     }
+    //Wenn der Benutzer nicht eingeloggt ist oder keine neuen Daten für ein Produkt 
+    //gesetzt sind wir der Benutzer hier zur Backend-Übersicht weitergeleitet
     else
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_uebersicht.php");
+        header("Location: backend_uebersicht.php");
     }
 
 ?>

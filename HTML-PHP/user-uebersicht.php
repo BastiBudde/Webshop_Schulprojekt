@@ -4,7 +4,7 @@
     //Wenn Benutzter nicht eingeloggt ist wird er zum Login weitergeleitet
     if(!(isset($_SESSION['user_login_korrekt'])))
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php");
+        header("Location: user-login.php");
     }   
     
     include "../includes/siteHeader.php";

@@ -53,11 +53,13 @@
         /*  Weiterleitung auf die Produktansicht-Seite des gerade hinzugefügten Produktes
             Durch den GET-Parameter "AddedToShoppingCart" in der URL wir dort dann ein Link
             zum Einkaufswagen und die Nachricht, dass das Produkt erfolgreich hinzugefügt wurde, angeteigt */
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/product-view.php?ID_Produkt=" . $productToAdd . "&AddedToShoppingCart=TRUE");
+        header("Location: product-view.php?ID_Produkt=" . $productToAdd . "&AddedToShoppingCart=TRUE");
 
     }
+    //Wenn kein Produkt zum hinzufügen gesetzt ist, dann wird der 
+    //Benutzer hier zur Startseite weitergeleitet
     else
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/index.php");
+        header("Location: ../index.php");
     }
 ?>

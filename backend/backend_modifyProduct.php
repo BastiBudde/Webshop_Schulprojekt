@@ -3,7 +3,7 @@
 
     if(!isset($_POST['ID_Produkt']))
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_search.php");
+        header("Location: backend_search.php");
     }
     
     include "../includes/siteHeader.php";
@@ -59,6 +59,8 @@
         or die ("Fehler bei der QUERY" . mysqli_error($dbh));
 
         $fetched_result = mysqli_fetch_row($result);
+
+        mysqli_close($dbh);
 
         echo "
             <div class='backend-newDBdataInput-container'>
@@ -145,6 +147,7 @@
         </div>"; 
 
     }
+    //Ist der Benutzer nicht im Backend eingeloggt wird hier ein Text und ein Link zum Login angezeigt
     else
     {
         echo "  <div class='backend-newDBdataInput-container'>

@@ -11,7 +11,7 @@
         dien Anschrift des Benutzers bereits beim Einloggen in Session-Variablen gespeichert wurde */
     if(isset($_SESSION['user_login_korrekt']))
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/bestellung_uebersicht.php");
+        header("Location: bestellung_uebersicht.php");
     }
     
     include "../includes/siteHeader.php";
@@ -91,6 +91,8 @@
                     </table>
                 </form>";
         }
+        //Besucht der Benutzer zum ersten mal diese Seite kann er hier zwischen 
+        //den Optionen "Einloggen", "Account erstellen" und "Als Gast fortfahren" wählen
         else
         {
            echo"<div class='flex-DirCol'>

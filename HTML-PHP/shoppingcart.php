@@ -7,20 +7,13 @@
 
     pageHead("Einkaufswagen");
 
-    
-    if(isset($_GET['UpdatedShoppingCart']) && $_GET['UpdatedShoppingCart'] == TRUE)
-    {
-        echo"   <div class='notice-box'>
-                    Ihre änderungen wurden Gespeichert!
-                </div>";
-    }
-
     echo"<table class='shoppingCart-Table'>
             <caption>
                 <h3>Einkaufswagen</h3>";
     echo"   </caption>";
 
-
+    //Überprüfen ob das Shoppingcart-Array bereits gesetzt
+    //wurde und ob das erstel Objekt nicht NULL ist
     if(isset($_SESSION['ShoppingCart']) && !(empty($_SESSION['ShoppingCart'])) && $_SESSION['ShoppingCart'][0]['ID_Produkt'] != NULL)
     {
         echo"   <tr>
@@ -35,26 +28,30 @@
 
         $indexOfItem = 0;
         $totalCost = 0;
-        $sqlOrderByString = '';
+        $sqlOrderByString = ''; //Wird in der SQL-Abfrage benötigt, damit die Produkte in der reihenfolge angezeigt werden in welcher sie hinzugefügt wurden
 
+        //Aktuelles Shoppingcart-Array holen
         $shoppingCart = $_SESSION['ShoppingCart'];
 
         //SQL-Abfrage aufstellen
-        $sql = "SELECT Picture_Path, Bezeichnung, Preis, ID_Produkt FROM produkt WHERE ";
-        foreach($shoppingCart as $produkt)
-        {
-            $sql .= 'ID_Produkt = ';
-            $sql .= strval($produkt['ID_Produkt']);
-            $sql .= ' OR ';
-            $sqlOrderByString .= strval($produkt['ID_Produkt']) . ",";
-        }
-        $sql = substr_replace($sql, "", strlen($sql) - 3);
-        //Sorgt im Einkaufswagen dafür, dass die Produkte in der Reihenfolge angezeigt werden, in welcher sie hinzugefügt wurden
-        $sql .= "ORDER BY FIND_IN_SET(ID_Produkt,'" . $sqlOrderByString . "');";
-        $sql = substr_replace($sql, "", strlen($sql) - 4, 1);
+            $sql = "SELECT Picture_Path, Bezeichnung, Preis, ID_Produkt FROM produkt WHERE ";
+            //Die einzelnen Produkt-IDs zur Abfrage hunzufügen
+            foreach($shoppingCart as $produkt)
+            {
+                $sql .= 'ID_Produkt = ';
+                $sql .= strval($produkt['ID_Produkt']);
+                $sql .= ' OR ';
+                $sqlOrderByString .= strval($produkt['ID_Produkt']) . ",";
+            }
+            //Die letzten drei Zeivhen entfernen
+            $sql = substr_replace($sql, "", strlen($sql) - 3);
+            
+            //Sorgt im Einkaufswagen dafür, dass die Produkte in der Reihenfolge angezeigt werden, in welcher sie hinzugefügt wurden
+            $sql .= "ORDER BY FIND_IN_SET(ID_Produkt,'" . $sqlOrderByString . "');";
+            $sql = substr_replace($sql, "", strlen($sql) - 4, 1);
 
         // Mit folgendem Code kann die sql-Abfrage und das ShoppingCart-Array
-        // im Einkaufswagen visualisiert werden
+        // im Einkaufswagen angezeigt werden
 
         // echo "<tr><td colspan='5'>";
         // echo     $sql;
@@ -79,16 +76,16 @@
             echo "<tr>";
 
             $link = "../" . $item[0];
-            echo "  <td id='table_reihe_bild'> 
+            echo "  <td id='bild'> 
                         <form action='product-view.php' method='get'>
                             <input type='hidden' name='ID_Produkt' value='$item[3]'> 
                             <input class='products_table_img' type='image' src='$link' alt='$link'>
                         </form>
                     </td>";
 
-            echo "<td id='table_zellen_bezeichnung'>" . $item[1] . "</td>";
+            echo "<td id='bezeichnung'>" . $item[1] . "</td>";
 
-            echo "  <td id='table_zellen_preis'> 
+            echo "  <td id='menge'> 
                         <form action='updateShoppingCart.php' method='POST'>
                             <input type='hidden' name='ProductToUpdate' value='$item[3]'>
                             <select name='NewAmount' onchange='javascript: submit();'>   
@@ -111,17 +108,17 @@
                         </form>
                     </td>";
 
-            echo "  <td id='table_zellen_preis'>" . $item[2] . "€</td>";
+            echo "  <td id='preis'>" . $item[2] . "€</td>";
 
-            echo "  <td id='table_zellen_preis'>" . $item[2] * $shoppingCart[$indexOfItem]['Menge'] . "€</td>";
+            echo "  <td id='preis'>" . $item[2] * $shoppingCart[$indexOfItem]['Menge'] . "€</td>";
             
             echo "</tr>";
 
             $indexOfItem ++;
         }
         echo "  <tr>
-                    <td id='table_zellen_totalPreis' colspan='5'>
-                        <div>    
+                    <td id='gesamtpreis' colspan='5'>
+                        <div class='flex-DirRow flex-SpaceBetween smallMarginTop'>    
                             <form action='deleteFromShoppingCart.php' method='POST'>
                                 <input type='hidden' name='ProductToDelete' value='0'></input>
                                 <input type='submit' class='button buttonSmall' value='Alle Produkte entfernen'></input>
@@ -132,7 +129,7 @@
                     </td>
                 </tr>";
         echo "  <tr>
-                    <td id='table_zellen_actionButtons' colspan='5'>
+                    <td id='bestellenButton' colspan='5'>
                         <form action='bestellung_anschrift.php' method='POST'>
                             <input type='submit' class='button buttonNormal' value='Bestellen!'></input>
                         </form>

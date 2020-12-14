@@ -2,9 +2,10 @@
     
     session_start();
 
+    //Ist der Benutzer bereits eingeloggt wird er hier zur Backend-Übersicht weitergeleitet
     if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login_korrekt'] == true)
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_uebersicht.php");
+        header("Location: backend_uebersicht.php");
     }
     
     include "../includes/siteHeader.php";

@@ -11,10 +11,12 @@
         mysqli_query($dbh, $sql)
             or die('Fehler bei der Stornierung!');
 
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-viewOrders.php");
+        mysqli_close($dbh);
+
+        header("Location: user-viewOrders.php?notice=Erfolgreich Storniert!");
     }
     else
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-viewOrders.php");
+        header("Location: user-viewOrders.php");
     }
 ?>

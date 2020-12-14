@@ -5,7 +5,6 @@
     {   
         include "../includes/connectToDB.php";
 
-
         // Wenn ein Produkt gelöscht wird dann müssen in diesem Fall auch immer die Beziehungen zu 
         // den einzelnen Bestellungen in welchen das Produkt vorkommt gelöscht werden werden. 
         // Im Endeffekt wird das Produkt dadurch aus den Bestellungen entfernt 
@@ -27,11 +26,14 @@
         mysqli_query($dbh,$sql)
         or die ("Fehler bei der QUERY:" . mysqli_error($dbh));
 
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_uebersicht.php?notice=Produkt erfolgreich gelöscht"); 
+        mysqli_close($dbh);
+
+        header("Location: backend_uebersicht.php?notice=Produkt erfolgreich gelöscht"); 
     }
+    //Ist der Benutzer nicht im Backend eingeloggt wird hier ein Text und ein Link zum Login angezeigt
     else
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/index.php"); 
+        header("Location: index.php"); 
     }
 
 ?>

@@ -3,7 +3,7 @@
     $dbserver   = "localhost";
     $dbuser   = "root";
     $dbpasswort   = "";
-    $dbname   = "webshop";
+    $dbname   = "webshop_melanie_sebastian";
 
     //Verbindung zum Db-Server aufbauen
     $dbh = mysqli_connect($dbserver,$dbuser,$dbpasswort)

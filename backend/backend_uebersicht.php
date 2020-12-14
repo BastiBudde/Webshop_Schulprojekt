@@ -150,7 +150,7 @@
         $currMonth_Count_zugestellt = mysqli_fetch_row($result)[0];
         $currMonth_Count_versendet = mysqli_fetch_row($result)[0];
 
-
+        mysqli_close($dbh);
 
 
     //////////Seite aufstellen\\\\\\\\\\
@@ -330,6 +330,7 @@
             
         </div>";
     }
+    //Ist der Benutzer nicht im Backend eingeloggt wird hier ein Text und ein Link zum Login angezeigt
     else
     {
         echo "  <div class='backend-newDBdataInput-container'>

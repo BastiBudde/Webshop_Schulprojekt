@@ -5,6 +5,7 @@
     include "../includes/siteFooter.php";
     include "../includes/connectToDB.php";
 
+    //ID des Produktes welches angesehen werden soll besorgen
     $id_produkt = $_GET['ID_Produkt'];
 
     //SQL-Abfrage aufstellen
@@ -14,6 +15,9 @@
     $result = mysqli_query($dbh,$sql)
     or die ("Fehler bei der QUERY");
 
+    //Datenbankverbindung schließen
+    mysqli_close($dbh);
+
     //Ergebnis der SQL-Abfrage verarbeiten
     $row=mysqli_fetch_row($result);
 
@@ -21,7 +25,7 @@
         so wird der User einfach zurück zur Startseite gesendet */
     if(empty($row))
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/index.php");
+        header("Location: ../index.php");
     }
 
 
@@ -70,7 +74,4 @@
     }
 
     pageFooter();
-
-    //Datenbankverbindung schließen
-    mysqli_close($dbh);
 ?>

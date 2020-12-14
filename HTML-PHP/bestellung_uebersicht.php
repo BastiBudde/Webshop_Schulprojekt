@@ -68,6 +68,8 @@
                             <th>Pos.</th> <th>ArtikelNr.</th> <th>Bild</th> <th>Bezeichnung</th> <th>Menge</th> <th>Stk. Preis</th> <th>Ges. Preis</th>
                         </tr>";
 
+        mysqli_close($dbh);
+
         //Ergebnis der SQL-Abfrage verarbeiten
         while($item = mysqli_fetch_row($result))
         {
@@ -138,7 +140,7 @@
     }
     else
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/shoppingcart.php");
+        header("Location: shoppingcart.php");
     }
 
     pageFooter();

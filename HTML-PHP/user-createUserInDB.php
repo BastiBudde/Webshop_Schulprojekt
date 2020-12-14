@@ -31,13 +31,17 @@
         
         //SQL-Abfrage an die Datenbank senden
         mysqli_query($dbh,$sql)
-        or die ("Fehler bei der QUERY". mysqli_error($dbh));
+            or die ("Fehler bei der QUERY". mysqli_error($dbh));
 
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php?notice=Konto erfolgreich angelegt");
+        mysqli_close($dbh);
+
+        //Weiterleiten zum User-Login mit der folgenden Nachricht
+        header("Location: user-login.php?notice=Konto erfolgreich angelegt");
     }
+    //Weiterleiten zum User-Login mit der folgenden Nachricht
     else
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-create_account.php?notice=Fehler beim anlegen ihres Kontos!"); 
+        header("Location: user-create_account.php?notice=Fehler beim anlegen ihres Kontos!"); 
     }
 
 ?>

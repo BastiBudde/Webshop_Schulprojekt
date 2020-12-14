@@ -3,7 +3,7 @@
     
     if(isset($_SESSION['user_login_korrekt']) && $_SESSION['user_login_korrekt'] == true)
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-uebersicht.php");
+        header("Location: user-uebersicht.php");
     }
     
     include "../includes/siteHeader.php";

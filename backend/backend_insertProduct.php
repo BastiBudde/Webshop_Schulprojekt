@@ -121,6 +121,7 @@
 
         </div>"; 
     }
+    //Ist der Benutzer nicht im Backend eingeloggt wird hier ein Text und ein Link zum Login angezeigt
     else
     {
         echo "  <div class='backend-newDBdataInput-container'>

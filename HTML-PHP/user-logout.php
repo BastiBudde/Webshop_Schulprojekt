@@ -3,5 +3,7 @@ session_start();
 $_SESSION = array();
 session_unset();
 session_destroy();
-header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php");
+
+//Weiterleitung zur User-Login-Seite
+header("Location: user-login.php");
 ?>

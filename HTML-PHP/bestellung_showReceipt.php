@@ -45,6 +45,8 @@
     $produkte_unfetched = mysqli_query($dbh, $sql)
                             or die("Fehler bei der Query: ".mysqli_error($dbh));
 
+    mysqli_close($dbh);
+
     //Auflistung eurer verschiedenen Posten im Format [Produkt ID, Produktbezeichnung, Menge, Einzelpreis]
     while($item = mysqli_fetch_row($produkte_unfetched))
     {

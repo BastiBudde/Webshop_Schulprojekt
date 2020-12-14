@@ -4,7 +4,7 @@
     //Wenn Benutzter nicht eingeloggt ist wird er zum Login weitergeleitet
     if(!(isset($_SESSION['user_login_korrekt'])))
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php");
+        header("Location: user-login.php");
     }   
     
     include "../includes/siteHeader.php";
@@ -31,6 +31,8 @@
 
         $result = mysqli_query($dbh, $sql)
             or die("Fehler beim abrufen der Bestellungen!\n"  . mysqli_errno($dbh) . ": " . mysqli_error($dbh));
+
+        mysqli_close($dbh);
 
         $bestellungen_grouped = array();
         $prev_ID_Bestellung = 0;
@@ -207,7 +209,7 @@
     }
     else
     {
-        header("Location: http://localhost/Webshop_Melanie_Sebastian/HTML-PHP/user-login.php");
+        header("Location: user-login.php");
     }
 
     pageFooter()
