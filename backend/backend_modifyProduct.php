@@ -37,8 +37,8 @@
                     document.getElementById('Kategorie').options[0]=new Option('Kategorie wählen','');
                     document.getElementById('Kategorie').options[1]=new Option('Figuren','Figuren');
                     document.getElementById('Kategorie').options[2]=new Option('Kleidung','Kleidung');
-                    document.getElementById('Kategorie').options[3]=new Option('Bettwäsche','Bettwaesche');
-                    document.getElementById('Kategorie').options[4]=new Option('Accessories','Accessories');
+                    document.getElementById('Kategorie').options[3]=new Option('Accessories','Accessories');
+                    document.getElementById('Kategorie').remove(4);
                     break;
                 }
                 return true;
@@ -81,7 +81,7 @@
                         
                         <tr>
                             <td> <label for='Bezeichnung'>Bezeichnung</label> </td>
-                            <td> <input type='text' value='".$fetched_result[0]."'id='Bezeichnung' class='Bezeichnung' name='Bezeichnung' required='true' maxlength='35'> </td>
+                            <td> <input type='text' value='".$fetched_result[0]."'id='Bezeichnung' class='Bezeichnung' name='Bezeichnung' required='true' maxlength='60'> </td>
                         </tr>
                         <tr>
                             <td> <label for='Kurzbeschreibung'>Kurzbeschreibung</label> </td>

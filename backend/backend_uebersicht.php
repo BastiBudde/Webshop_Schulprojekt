@@ -97,7 +97,7 @@
                 FROM bestellung
                 WHERE (status LIKE 'Versendet' OR status LIKE 'Zugestellt')  
                     AND Timestamp > '$currMonth';";
-        print_r($sql);
+
         $result = mysqli_query($dbh, $sql)
                     or die("Fehler bei der Query (Anzahl und Summen Bestellungen dieser Monate): ".mysqli_error($dbh));
                   
@@ -161,7 +161,6 @@
     {
 
         echo "
-        
         <div class='flex-DirCol hugeMarginBottom'>
             <div class='flex-DirCol'>
 

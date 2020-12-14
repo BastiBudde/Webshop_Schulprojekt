@@ -375,6 +375,30 @@ footer
   justify-content: center;
 }
 
+footer div
+{
+  width: 750px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  font-size: 16px;
+  color: #ffffff;
+}
+
+footer a
+{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:active
+{
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 .products_table
 {
   border-collapse: collapse;
@@ -936,6 +960,78 @@ footer
   width: 700px;
   margin: 0 auto;
 }
+
+
+
+
+.agbContainer
+{
+  width: 1000px;
+  text-align: left;
+}
+
+.agbContainer h1
+{
+  margin-bottom: 40px;
+}
+
+.agbContainer dd h2
+{
+  margin-bottom: 30px;
+}
+
+.agbContainer dt
+{
+  margin-top: px;
+  margin-bottom: 15px;
+}
+
+.agbContainer dd
+{
+  margin-bottom: 15px;
+  margin-left: 40px;
+}
+
+.datenschutzContainer,
+.impressumContainer
+{
+  width: 1000px;
+  text-align: left;
+  justify-content: left; 
+}
+
+.datenschutzContainer h1,
+.impressumContainer h1
+{
+  margin-bottom: 20px;
+}
+
+.datenschutzContainer h2,
+.impressumContainer h2
+{
+  margin-top: 30px;
+}
+
+.datenschutzContainer h3,
+.datenschutzContainer p
+{
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.impressumContainer h3,
+.impressumContainer p
+{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.datenschutzContainer ul,
+.impressumContainer ul
+{
+  list-style-position: inside;
+}
+
 
 
 

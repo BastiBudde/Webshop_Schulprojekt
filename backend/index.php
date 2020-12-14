@@ -18,6 +18,7 @@
                         <form action='backend-login.php' method='POST'>
                             <div class='flex-DirCol flex-Center'>
                                 <div>
+                                    Standard-Benutzer: admin <br> Standard-Passwort: admin
                                     <input class='inputForm longInput' id='username' type='text' name='username' placeholder='Benutzer' required='true'>
                                     <input class='inputForm longInput' id='password' type='password' name='password' placeholder='Passwort' required='true'>
                                 </div>

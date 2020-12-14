@@ -161,16 +161,8 @@
                                 <tr>
                                     <td> 
                                         <form action='../HTML-PHP/list-view.php' method='get'>
-                                            <input type='hidden' name='Kategorie' value='Bettwaesche'></input>
-                                            <input class='hardware-dropdown-button' type='submit' value='Bettwäsche'> 
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> 
-                                        <form action='../HTML-PHP/list-view.php' method='get'>
-                                            <input type='hidden' name='Kategorie' value='Accessoires'></input>
-                                            <input class='hardware-dropdown-button' type='submit' value='Accessoires'> 
+                                            <input type='hidden' name='Kategorie' value='Accessories'></input>
+                                            <input class='hardware-dropdown-button' type='submit' value='Accessories'> 
                                         </form>
                                     </td>
                                 </tr>
@@ -184,7 +176,7 @@
 
             <main class='flex-DirCol flex-Center'>
         
-                <article>";
+                <article class='flex-DirRow'>";
 
             echo $page;
 

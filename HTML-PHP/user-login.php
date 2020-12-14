@@ -17,6 +17,7 @@
             <form action='user-login-verification.php' method='POST'>
                 <div class='flex-DirCol flex-Center'>
                     <div> 
+                        Test-Benutzer: Max@Mustermann.de <br> Standard-Passwort 1234567890
                         <input class='inputForm longInput' id='e-Mail' type='text' name='e-Mail' size='30' placeholder='E-Mail' required='true'> 
                         <input class='inputForm longInput' id='password' type='password' name='password' size='30' placeholder='Passwort' required='true'>
                     </div>

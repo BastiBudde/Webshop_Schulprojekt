@@ -8,38 +8,6 @@
 
     pageHead("Backend Suche");
 
-    echo"
-        <script language='javascript' type='text/javascript'>
-            function dynamicdropdown(listindex)
-            {
-                switch (listindex)
-                {
-                case 'Games' :
-                    document.getElementById('Kategorie').options[0]=new Option('Kategorie wählen','');
-                    document.getElementById('Kategorie').options[1]=new Option('Action','Action');
-                    document.getElementById('Kategorie').options[2]=new Option('Adventure','Adventure');
-                    document.getElementById('Kategorie').options[3]=new Option('Science-Fiction','Science-Fiction');
-                    break;
-                case 'Hardware' :
-                    document.getElementById('Kategorie').options[0]=new Option('Kategorie wählen','');
-                    document.getElementById('Kategorie').options[1]=new Option('Monitore','Monitore');
-                    document.getElementById('Kategorie').options[2]=new Option('Tastaturen','Tastaturen');
-                    document.getElementById('Kategorie').options[3]=new Option('Mäuse','Maeuse');
-                    document.getElementById('Kategorie').options[4]=new Option('Headsets','Headsets');
-                    break;
-                case 'Fanartikel' :
-                    document.getElementById('Kategorie').options[0]=new Option('Kategorie wählen','');
-                    document.getElementById('Kategorie').options[1]=new Option('Figuren','Figuren');
-                    document.getElementById('Kategorie').options[2]=new Option('Kleidung','Kleidung');
-                    document.getElementById('Kategorie').options[3]=new Option('Bettwäsche','Bettwaesche');
-                    document.getElementById('Kategorie').options[3]=new Option('Accessories','Accessories');
-                    break;
-                }
-                return true;
-            }
-        </script>";
-
-
     if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login_korrekt'] == true)
     {
         if(isset($_POST['Suchart']))

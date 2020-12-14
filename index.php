@@ -1,5 +1,24 @@
 <?php
-session_start();
+    session_start();
+
+    include "includes/connectToDB.php";
+
+    $sql = "SELECT Picture_Path, Bezeichnung, Kurzbeschreibung, Preis, ID_Produkt 
+            FROM produkt
+            ORDER BY hinzugefuegt DESC
+            LIMIT 6;";
+    $recentlyAdded = mysqli_query($dbh,$sql)
+                        or die ("Fehler bei der QUERY  (recent Products)".mysqli_error($dbh));
+
+
+    $sql = "SELECT Picture_Path, Bezeichnung, Kurzbeschreibung, Preis, ID_Produkt 
+            FROM produkt
+            ORDER BY RAND()
+            LIMIT 6;";
+    $randomProducts = mysqli_query($dbh,$sql)
+                        or die ("Fehler bei der QUERY  (random Products)".mysqli_error($dbh));
+                    
+    mysqli_close($dbh);
 ?>
 
 <!DOCTYPE html>
@@ -163,16 +182,8 @@ session_start();
                         <tr>
                             <td> 
                                 <form action="HTML-PHP/list-view.php" method="get">
-                                    <input type='hidden' name="Kategorie" value="Bettwaesche"></input>
-                                    <input class="hardware-dropdown-button" type="submit" value="Bettwäsche"> 
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 
-                                <form action="HTML-PHP/list-view.php" method="get">
-                                    <input type='hidden' name="Kategorie" value="Accessoires"></input>
-                                    <input class="hardware-dropdown-button" type="submit" value="Accessoires"> 
+                                    <input type='hidden' name="Kategorie" value="Accessories"></input>
+                                    <input class="hardware-dropdown-button" type="submit" value="Accessories"> 
                                 </form>
                             </td>
                         </tr>
@@ -187,15 +198,115 @@ session_start();
     <main class='flex-DirCol flex-Center'>
         
         <article>
+            <div>
 
-                <img src="Bilder/GamingHeavenLogo.svg" alt="Gaming Heaven Logo" title="Logo" width="500">
+                <?php
+                    //Ausgabe der "Zuletz Hinzugefügt"-Tabelle
+                    $h = 0;
 
+                    echo "<table class='products_table'>
+                            <caption class='textAlLeft smallMarginBottom'>Zuletzt hinzugefügt</caption>
+                            <tr>
+                                <th>Bild</th>
+                                <th>Bezeichnung</th>
+                                <th>Kurzbeschreibung</th>
+                                <th>Preis in Euro</th>
+                            </tr>";
+                    
+                    //Ergebnis der SQL-Abfrage (Zuletzt hinzugefügte Produkte) verarbeiten
+                    while($row=mysqli_fetch_row($recentlyAdded))
+                    {
+                        echo "<tr>";
+                        foreach($row as $i)
+                        {
+                            if($h == 0)
+                            {
+                                echo "  <td id='table_zellen_bild'> 
+                                            <form action='HTML-PHP/product-view.php' method='get'>
+                                                <input type='hidden' name='ID_Produkt' value='$row[4]'> 
+                                                <input class='products_table_img' type='image' src='$i' alt='$i'>
+                                            </form> 
+                                        </td>";
+                            }
+                            else if($h == 1)
+                            {
+                                echo "<td id='table_zellen_bezeichnung'> $i </td>";
+                            }
+                            else if($h == 2)
+                            {
+                                echo "<td id='table_zellen_kurzbeschreibung'> $i </td>";
+                            }
+                            else if($h == 3)
+                            {
+                                echo "<td id='table_zellen_preis'> $i €</td>";
+                            }
+                            $h++;
+                        }
+                        echo "</tr>";
+                        $h = 0;
+                    }
+                    echo"</table>";
+
+
+                    //Ausgabe der "Random Produkte"-Tabelle
+                    $h = 0;
+
+                    echo "<table class='products_table'>
+                            <caption class='textAlLeft smallMarginBottom'>Weitere Produkte</caption>
+                            <tr>
+                                <th>Bild</th>
+                                <th>Bezeichnung</th>
+                                <th>Kurzbeschreibung</th>
+                                <th>Preis in Euro</th>
+                            </tr>";
+                    
+                    //Ergebnis der SQL-Abfrage (Zuletzt hinzugefügte Produkte) verarbeiten
+                    while($row=mysqli_fetch_row($randomProducts))
+                    {
+                        echo "<tr>";
+                        foreach($row as $i)
+                        {
+                            if($h == 0)
+                            {
+                                echo "  <td id='table_zellen_bild'> 
+                                            <form action='HTML-PHP/product-view.php' method='get'>
+                                                <input type='hidden' name='ID_Produkt' value='$row[4]'> 
+                                                <input class='products_table_img' type='image' src='$i' alt='$i'>
+                                            </form> 
+                                        </td>";
+                            }
+                            else if($h == 1)
+                            {
+                                echo "<td id='table_zellen_bezeichnung'> $i </td>";
+                            }
+                            else if($h == 2)
+                            {
+                                echo "<td id='table_zellen_kurzbeschreibung'> $i </td>";
+                            }
+                            else if($h == 3)
+                            {
+                                echo "<td id='table_zellen_preis'> $i €</td>";
+                            }
+                            $h++;
+                        }
+                        echo "</tr>";
+                        $h = 0;
+                    }
+                    
+                    echo"</table>";
+                ?>
+            </div>
         </article>
 
         <footer>
-
-            <p>Hello World!</p>
-            
+            <div>
+                <a href='HTML-PHP/agb.php' >Unsere AGB</a>
+                <a href='HTML-PHP/datenschutzerklaerung.php' >Datenschutzerklärung</a>
+                <a href='HTML-PHP/impressum.php' >Impressum</a>
+                <a href='mailto:support@GamingHeaven.de'>Support</a>
+                <a href='mailto:contact@GamingHeaven.de'>Kontakt</a>
+                <p>&copy; 2020 GamingHeaven GmbH.</p>
+            </div>
         </footer>
 
     </main>

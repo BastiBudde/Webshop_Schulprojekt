@@ -1,8 +1,10 @@
 <?php
 session_start();
 
+//Überprüfwn ob der Mitarbeiter eingeloggt ist
 if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login_korrekt'] == true)
 {
+    //Überprüfen ob alle Angaben zum Produkt gesetz wurden
     if( isset($_POST['Bezeichnung']) && isset($_POST['Kurzbeschreibung']) && 
         isset($_POST['Beschreibung']) && isset($_POST['Preis']) &&
         isset($_POST['Sparte']) && isset($_POST['Kategorie']) &&
@@ -25,11 +27,13 @@ if(isset($_SESSION['mitarbeiter_login_korrekt']) && $_SESSION['mitarbeiter_login
 
             //SQL-Abfrage an die Datenbank senden
             $result = mysqli_query($dbh,$sql)
-                or die ("Fehler bei der QUERY");
+                or die ("Fehler bei der QUERY".mysqli_error($dbh));
 
+            //Weiterleitung zum Übersichtsseite des Backends
             header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/backend_uebersicht.php?notice=Produkt erfolgreich eingefügt"); 
         }
 }
+//Ist der mitarbeiter nicht eingeloggt wird er zum Login weitergeleitet
 else
 {
     header("Location: http://localhost/Webshop_Melanie_Sebastian/backend/index.php");
